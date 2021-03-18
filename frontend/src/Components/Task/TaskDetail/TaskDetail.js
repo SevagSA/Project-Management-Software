@@ -3,6 +3,7 @@ import styles from "./Styles";
 import {tasks} from "../../../DummyData";
 import IndividualTask from "../../Widgets/Task/IndividualTask/IndividualTask";
 import ActivityWidget from "../../Widgets/Activity/ActivityWidget/ActivityWidget";
+import TaskSidebar from "../../Widgets/Task/TaskSidebar/TaskSidebar";
 
 export default function TaskDetail() {
     const { id } = useParams();
@@ -13,9 +14,7 @@ export default function TaskDetail() {
                 <IndividualTask task={task}/>
                 <ActivityWidget />
             </styles.TaskInfoSection>
-            <styles.Sidebar>
-                Sidebar
-            </styles.Sidebar>
+            <TaskSidebar task={task}/>
         </styles.Wrapper>
     )
 }
