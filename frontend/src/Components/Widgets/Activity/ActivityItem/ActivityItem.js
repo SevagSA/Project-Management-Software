@@ -10,10 +10,10 @@ export default function ActivityItem({activity}) {
             </styles.IconHolder>
             <styles.InfoHolder>
                 <styles.Timestamp>
-
+                    13:34
                 </styles.Timestamp>
                 <styles.ActivityDescription>
-                    
+                    Lorem ipsum, or lipsum as it is sometimes known, is dummy text used
                 </styles.ActivityDescription>
             </styles.InfoHolder>
         </styles.Wrapper>
