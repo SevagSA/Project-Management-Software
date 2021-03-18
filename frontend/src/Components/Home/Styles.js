@@ -4,4 +4,8 @@ const WidgetWrapper = styled.div`
     display: flex;
 `;
 
-export {WidgetWrapper};
+const styles = {
+    WidgetWrapper
+};
+
+export default styles;

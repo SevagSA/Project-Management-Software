@@ -1,14 +1,14 @@
-import {SidebarNavItemButton, ItemTitle} from "./Styles"
+import styles from "./Styles"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 export default function SidebarNavItem({itemTitle, icon}) {
     return (
         <div>
-            <SidebarNavItemButton>
+            <styles.SidebarNavItemButton>
                 {icon}
-                <ItemTitle>{itemTitle}</ItemTitle>
+                <styles.ItemTitle>{itemTitle}</styles.ItemTitle>
                 <ArrowForwardIosIcon />
-            </SidebarNavItemButton>
+            </styles.SidebarNavItemButton>
         </div>
     )
 }

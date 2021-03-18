@@ -27,4 +27,10 @@ const ProfileImg = styled.img`
     height: 60%;
 `;
 
-export {SidebarNavWrapper, SidebarNavProfileHolder, ProfileImg};
+const styles = {
+    SidebarNavWrapper,
+    SidebarNavProfileHolder,
+    ProfileImg
+};
+
+export default styles;

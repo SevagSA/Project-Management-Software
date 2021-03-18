@@ -18,4 +18,9 @@ const ItemTitle = styled.p`
     margin-left: 8px;
 `;
 
-export {SidebarNavItemButton, ItemTitle};
+const styles = {
+    SidebarNavItemButton,
+    ItemTitle
+};
+
+export default styles;
