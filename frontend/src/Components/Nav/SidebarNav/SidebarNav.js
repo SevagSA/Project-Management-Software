@@ -13,7 +13,7 @@ export default function SidebarNav() {
         <styles.SidebarNavWrapper>
             <styles.SidebarNavProfileHolder> 
                 <styles.ProfileImg src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
-                <p>John Doe | Admin</p>
+                <styles.Username>John Doe | Admin</styles.Username>
             </styles.SidebarNavProfileHolder>
             <Link exact to="/"><SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />}/></Link>
             <Link exact to="/messages"><SidebarNavItem itemTitle={"Messaging"} icon={<ChatIcon />} /></Link>

@@ -10,6 +10,7 @@ const SidebarNavItemButton = styled.button`
     border: none;
     width: 100%;
     cursor: pointer;
+    background-color: white;
 `;
 
 const ItemTitle = styled.p`

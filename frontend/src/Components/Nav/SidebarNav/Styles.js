@@ -7,7 +7,7 @@ const SidebarNavWrapper = styled.aside`
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #f7f7f7;
+    background-color: #1735bd;
     overflow-x: hidden;
     padding-top: 20px;
 
@@ -27,10 +27,15 @@ const ProfileImg = styled.img`
     height: 60%;
 `;
 
+const Username = styled.p`
+    color: white;
+`;
+
 const styles = {
     SidebarNavWrapper,
     SidebarNavProfileHolder,
-    ProfileImg
+    ProfileImg,
+    Username
 };
 
 export default styles;
