@@ -1,7 +1,7 @@
 import styles from "./Styles";
 import ActivityItem from "../ActivityItem/ActivityItem";
 
-export default function ActivityWidget() {
+export default function ActivityWidget({activities}) {
     return (
         <styles.Wrapper>
             <ActivityItem />

@@ -1,9 +1,10 @@
-import SmallSquare from "../Widgets/SmallSquare/SmallSquare";
-import TaskList from "../Widgets/Task/TaskList/TaskList";
 import styles from "./Styles";
 import {tasks} from "../../DummyData";
-export default function Home() {
+import SmallSquare from "../Widgets/SmallSquare/SmallSquare";
+import TaskList from "../Widgets/Task/TaskList/TaskList";
+import ActivityWidget from "../Widgets/Activity/ActivityWidget/ActivityWidget";
 
+export default function Home() {
     return (
         <div>
             <h1>Home</h1>
@@ -14,6 +15,7 @@ export default function Home() {
                 <SmallSquare numOfTasks={2} status="on hold" />
             </styles.WidgetWrapper>
             <styles.WidgetWrapper>
+                <ActivityWidget />
                 <TaskList tasks={tasks} />
             </styles.WidgetWrapper>
         </div>
