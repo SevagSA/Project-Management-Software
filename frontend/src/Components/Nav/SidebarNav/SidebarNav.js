@@ -1,6 +1,9 @@
 import SidebarNavItem from "../SidebarNavItem/SidebarNavItem"
-import {SidebarNavWrapper, SidebarNavProfileHolder, ProfileImg} from "./Styles";
-import profile_picture from "frontend/src/images/profile_picture.png"
+import {
+    SidebarNavWrapper,
+    SidebarNavProfileHolder,
+    ProfileImg
+} from "./Styles";
 
 
 import HomeIcon from '@material-ui/icons/Home';
@@ -12,8 +15,9 @@ import CreateIcon from '@material-ui/icons/Create';
 export default function SidebarNav() {
     return (
         <SidebarNavWrapper>
-            <SidebarNavProfileHolder>
-                <ProfileImg />
+            <SidebarNavProfileHolder> 
+                <ProfileImg src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
+                <p>John Doe | Admin</p>
             </SidebarNavProfileHolder>
             <SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />}/>
             <SidebarNavItem itemTitle={"Messaging"} icon={<ChatIcon />} />

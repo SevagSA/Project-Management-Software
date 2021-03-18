@@ -14,11 +14,17 @@ const SidebarNavWrapper = styled.aside`
 `;
 
 const SidebarNavProfileHolder = styled.div`
-    height: 150px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
-const ProfileImg = styled.image`
-    border: 20px;
+const ProfileImg = styled.img`
+    border-radius: 50%;
+    width: 60%;
+    height: 60%;
 `;
 
 export {SidebarNavWrapper, SidebarNavProfileHolder, ProfileImg};
