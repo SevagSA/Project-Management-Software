@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import styles from "./Styles";
 import {tasks} from "../../../DummyData";
-import LargeInfoRectangle from "../../Widgets/LargeInfoRectangle/LargeInfoRectangle";
+import IndividualTask from "../../Widgets/Task/IndividualTask/IndividualTask";
 import ActivityWidget from "../../Widgets/ActivityWidget/ActivityWidget";
 
 export default function TaskDetail() {
@@ -11,7 +11,7 @@ export default function TaskDetail() {
         <styles.Wrapper>
             <styles.TaskInfoSection>
                 Task info section
-                <LargeInfoRectangle />
+                <IndividualTask task={task}/>
                 <ActivityWidget />
             </styles.TaskInfoSection>
             <styles.Sidebar>
