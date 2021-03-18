@@ -1,4 +1,5 @@
 import {SidebarNavItemWrapper} from "./Styles"
+import HomeIcon from '@material-ui/icons/Home';
 
 export default function SidebarNavItem() {
     return (
@@ -6,7 +7,7 @@ export default function SidebarNavItem() {
             <SidebarNavItemWrapper>
                 {/* icon */}
                 <p>Home</p>
-                {/* icon */}
+                <HomeIcon />
             </SidebarNavItemWrapper>
         </div>
     )
