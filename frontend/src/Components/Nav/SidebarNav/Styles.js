@@ -1,9 +1,24 @@
 import styled from "styled-components";
 
-const SidebarNavItemWrapper = styled.div`
+const SidebarNavWrapper = styled.aside`
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
     background-color: #f7f7f7;
-    display: flex;
-    flex-direction: row;
+    overflow-x: hidden;
+    padding-top: 20px;
+
 `;
 
-export {SidebarNavItemWrapper};
+const SidebarNavProfileHolder = styled.div`
+    height: 150px;
+`;
+
+const ProfileImg = styled.image`
+    border: 20px;
+`;
+
+export {SidebarNavWrapper, SidebarNavProfileHolder, ProfileImg};
