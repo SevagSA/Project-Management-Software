@@ -4,7 +4,7 @@ import {
     SidebarNavProfileHolder,
     ProfileImg
 } from "./Styles";
-
+import { Link } from "react-router-dom";  
 
 import HomeIcon from '@material-ui/icons/Home';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -19,10 +19,10 @@ export default function SidebarNav() {
                 <ProfileImg src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
                 <p>John Doe | Admin</p>
             </SidebarNavProfileHolder>
-            <SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />}/>
-            <SidebarNavItem itemTitle={"Messaging"} icon={<ChatIcon />} />
-            <SidebarNavItem itemTitle={"View Tasks"} icon={<AssignmentIcon />}/>
-            <SidebarNavItem itemTitle={"Create Task"} icon={<CreateIcon />}/>
+            <Link exact to="/"><SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />}/></Link>
+            <Link exact to="/messages"><SidebarNavItem itemTitle={"Messaging"} icon={<ChatIcon />} /></Link>
+            <Link exact to="/tasks"><SidebarNavItem itemTitle={"View Tasks"} icon={<AssignmentIcon />}/></Link>
+            <Link exact to="/create-task"><SidebarNavItem itemTitle={"Create Task"} icon={<CreateIcon />}/></Link>
         </SidebarNavWrapper>
     )
 }
