@@ -9,6 +9,15 @@ export default function ActivityWidget() {
             <ActivityItem />
             <ActivityItem />
             <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
+            <ActivityItem />
         </styles.Wrapper>
     )
 }

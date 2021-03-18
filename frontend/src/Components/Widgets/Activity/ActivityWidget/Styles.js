@@ -6,6 +6,7 @@ const Wrapper = styled.div`
     flex: .65;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 `;
 
 const styles = {
