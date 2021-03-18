@@ -10,6 +10,7 @@ import CreateTask from "./Components/Task/CreateTask";
 import ViewAllTasks from "./Components/Task/ViewAllTasks";
 import MessageRoom from "./Components/Message/MessageRoom";
 import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
+import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
 
 function App() {
   return (
@@ -20,12 +21,15 @@ function App() {
                 <Route path="/messages">
                     <MessageRoom />
                 </Route>
+                <Route path="/tasks/:id">
+                    <TaskDetail />
+                </Route>
                 <Route path="/tasks">
                     <ViewAllTasks />
                 </Route>
-                <Router path="/create-task">
+                <Route path="/create-task">
                     <CreateTask />
-                </Router>
+                </Route>
                 <Route path="/">
                     <Home />
                 </Route>
