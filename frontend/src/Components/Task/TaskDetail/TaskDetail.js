@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import styles from "./Styles";
 import {tasks} from "../../../DummyData";
 import IndividualTask from "../../Widgets/Task/IndividualTask/IndividualTask";
-import ActivityWidget from "../../Widgets/ActivityWidget/ActivityWidget";
+import ActivityWidget from "../../Widgets/Activity/ActivityWidget/ActivityWidget";
 
 export default function TaskDetail() {
     const { id } = useParams();
@@ -10,7 +10,6 @@ export default function TaskDetail() {
     return (
         <styles.Wrapper>
             <styles.TaskInfoSection>
-                Task info section
                 <IndividualTask task={task}/>
                 <ActivityWidget />
             </styles.TaskInfoSection>

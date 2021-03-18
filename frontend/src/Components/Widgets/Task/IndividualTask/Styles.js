@@ -4,11 +4,13 @@ const Wrapper = styled.div`
     background-color: white;
     position: relative;
     display: flex;
+    flex: .30;
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 `;
 
 const TaskTitle = styled.h4`
