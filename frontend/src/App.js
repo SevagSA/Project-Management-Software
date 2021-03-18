@@ -1,14 +1,15 @@
-import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
+import GlobalStyle from "./GlobalStyle";
 
 import Home from "./Components/Home/Home";
+import CreateTask from "./Components/Task/CreateTask";
 import ViewAllTasks from "./Components/Task/ViewAllTasks";
 import MessageRoom from "./Components/Message/MessageRoom";
-import CreateTask from "./Components/Task/CreateTask";
+import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 </Route>
             </Switch>
         </div>
+        <GlobalStyle />
     </Router>
   );
 }
