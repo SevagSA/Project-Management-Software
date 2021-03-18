@@ -7,7 +7,7 @@ import GlobalStyle from "./GlobalStyle";
 
 import Home from "./Components/Home/Home";
 import CreateTask from "./Components/Task/CreateTask";
-import ViewAllTasks from "./Components/Task/ViewAllTasks";
+import ViewTasks from "./Components/Task/ViewTasks/ViewTasks";
 import MessageRoom from "./Components/Message/MessageRoom";
 import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
@@ -25,7 +25,7 @@ function App() {
                     <TaskDetail />
                 </Route>
                 <Route path="/tasks">
-                    <ViewAllTasks />
+                    <ViewTasks />
                 </Route>
                 <Route path="/create-task">
                     <CreateTask />
