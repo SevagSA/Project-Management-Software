@@ -18,7 +18,7 @@ const PictureAndActionHolder = styled.div`
     align-items: center;
 `;
 
-const Picture = styled.img`
+const ProfilePic = styled.img`
     border-radius: 50%;
     height: 200px;
     width: 200px;
@@ -91,7 +91,7 @@ const NumberTxt = styled.p`
 const styles = {
     Wrapper,
     PictureAndActionHolder,
-    Picture,
+    ProfilePic,
     ActionBtn,
     ProfileInfoHolder,
     ProfileOverviewHolder,

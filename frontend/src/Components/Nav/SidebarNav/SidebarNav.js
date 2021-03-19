@@ -12,7 +12,7 @@ export default function SidebarNav() {
     return (
         <styles.SidebarNavWrapper>
             <styles.SidebarNavProfileHolder>
-                <styles.ProfileImg src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
+                <styles.ProfilePic src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
                 <styles.Username>John Doe | Admin</styles.Username>
             </styles.SidebarNavProfileHolder>
             <Link exact to="/"><SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />} /></Link>

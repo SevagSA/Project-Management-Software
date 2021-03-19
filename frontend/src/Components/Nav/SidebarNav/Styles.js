@@ -21,7 +21,7 @@ const SidebarNavProfileHolder = styled.div`
     justify-content: center;
 `;
 
-const ProfileImg = styled.img`
+const ProfilePic = styled.img`
     border-radius: 50%;
     width: 60%;
     height: 60%;
@@ -34,7 +34,7 @@ const Username = styled.p`
 const styles = {
     SidebarNavWrapper,
     SidebarNavProfileHolder,
-    ProfileImg,
+    ProfilePic,
     Username
 };
 

@@ -1,9 +1,9 @@
-import React from 'react'
+import styles from "./Styles";
 
 export default function ChatView() {
     return (
-        <div>
+        <styles.Wrapper>
             ChatView
-        </div>
+        </styles.Wrapper>
     )
 }
