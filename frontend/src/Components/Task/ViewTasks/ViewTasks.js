@@ -1,7 +1,7 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import styles from "./Styles";
-import {tasks, status} from "../../../DummyData";
-import {useLocation} from "react-router-dom";
+import { tasks, status } from "../../../DummyData";
+import { useLocation } from "react-router-dom";
 import TaskSearchResultCard from "../TaskSearchResultCard/TaskSearchResultCard";
 
 export default function ViewTasks() {
@@ -26,7 +26,7 @@ export default function ViewTasks() {
         }
         let query;
         if (e === null) {
-            query=statusURLParam.toLowerCase();
+            query = statusURLParam.toLowerCase();
         } else if (statusURLParam === null) {
             query = e.target.value.toLowerCase();
         }
@@ -46,7 +46,7 @@ export default function ViewTasks() {
             <styles.SearchDiv>
                 <styles.ResultCountHolder>
                     <styles.ResultCount>
-                    {searchResults.length} {searchResults.length > 1 ?"Tasks" : "Task"}
+                        {searchResults.length} {searchResults.length > 1 ? "Tasks" : "Task"}
                     </styles.ResultCount>
                 </styles.ResultCountHolder>
 
@@ -60,25 +60,21 @@ export default function ViewTasks() {
                         onChange={searchTaskByPM}
                         placeholder="Search by PM name" />
                     <styles.SearchFilterBy onChange={searchTaskByStatus}>
-                    <option value="" selected disabled hidden>Search by Status</option>
-                    {status.map(e => {
-                        return (
-                            <option key={e} value={e}>{e}</option>
-                        )
-                    })}
+                        <option value="" selected disabled hidden>Search by Status</option>
+                        {status.map(e => {
+                            return (
+                                <option key={e} value={e}>{e}</option>
+                            )
+                        })}
                     </styles.SearchFilterBy>
                 </styles.SearchFieldHolder>
             </styles.SearchDiv>
 
             <styles.ResultDiv>
-                {searchResults ? 
-                    searchResults.map(task => {
-                        return (
-                            <TaskSearchResultCard task={task}/>
-                        )
-                    })
-                : tasks.map(task => {
-                    return <TaskSearchResultCard task={task}/>
+                {searchResults.map(task => {
+                    return (
+                        <TaskSearchResultCard task={task} />
+                    )
                 })}
             </styles.ResultDiv>
         </styles.Wrapper>

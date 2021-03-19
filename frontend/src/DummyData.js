@@ -41,6 +41,31 @@ const status = [
     "In progress",
     "Not started",
     "On hold",
-]
+];
 
-export {tasks, status};
+const members = [
+    {
+        "name": "Hagop",
+        "role": "Project Manager",
+    },
+    {
+        "name": "Alex",
+        "role": "Full-Stack Developer",
+    },
+    {
+        "name": "Jason",
+        "role": "UX Designer",
+    },
+    {
+        "name": "Kattie",
+        "role": "Product Manager",
+    },
+    {
+        "name": "Alice",
+        "role": "Backend Developer",
+    },
+];
+
+const roles = ["Backend Developer", "Project Manager", "Product Manager", "UX Designer"];
+
+export { tasks, status, members, roles };

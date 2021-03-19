@@ -14,6 +14,7 @@ import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
 import Registration from "./Components/Authentication/Registration";
 import Login from "./Components/Authentication/Login";
 import Profile from "./Components/Profile/Profile";
+import ViewMembers from "./Components/Members/ViewMembers";
 
 function App() {
     return (
@@ -44,6 +45,9 @@ function App() {
                     </Route>
                     <Route path="/profile-page">
                         <Profile />
+                    </Route>
+                    <Route path="/members">
+                        <ViewMembers />
                     </Route>
                     <Route path="/">
                         <Home />

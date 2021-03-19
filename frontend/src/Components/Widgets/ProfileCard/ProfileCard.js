@@ -11,8 +11,8 @@ export default function ProfileCard({ member }) {
 
             <styles.ProfileInfoHolder>
                 <styles.ProfileOverviewHolder>
-                    <styles.Name>Justin Rob</styles.Name>
-                    <styles.Role>Project Manager</styles.Role>
+                    <styles.Name>{member.name}</styles.Name>
+                    <styles.Role>{member.role}</styles.Role>
 
                     <styles.TextInfo>Email: justin@org.com</styles.TextInfo>
                     <styles.TextInfo>Phone Number: (828) 234-5365</styles.TextInfo>
