@@ -6,7 +6,7 @@ export default function ProfileCard({ member }) {
 
             <styles.PictureAndActionHolder>
                 <styles.Picture src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
-                <styles.ActionBtn>Message</styles.ActionBtn>
+                <styles.ActionBtn>Chat</styles.ActionBtn>
             </styles.PictureAndActionHolder>
 
             <styles.ProfileInfoHolder>

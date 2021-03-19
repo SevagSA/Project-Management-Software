@@ -8,7 +8,7 @@ import GlobalStyle from "./GlobalStyle";
 import Home from "./Components/Home/Home";
 import CreateTask from "./Components/Task/CreateTask";
 import ViewTasks from "./Components/Task/ViewTasks/ViewTasks";
-import MessageRoom from "./Components/Message/MessageRoom";
+import ChatRoom from "./Components/Chat/ChatRoom/ChatRoom";
 import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
 import Registration from "./Components/Authentication/Registration";
@@ -22,8 +22,8 @@ function App() {
             <div>
                 <SidebarNav />
                 <Switch>
-                    <Route path="/messages">
-                        <MessageRoom />
+                    <Route path="/chat">
+                        <ChatRoom />
                     </Route>
                     <Route path="/tasks/:id">
                         <TaskDetail />
