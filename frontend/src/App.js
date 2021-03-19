@@ -13,6 +13,7 @@ import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
 import Registration from "./Components/Authentication/Registration";
 import Login from "./Components/Authentication/Login";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
     return (
@@ -40,6 +41,9 @@ function App() {
                     </Route>
                     <Route path="/login">
                         <Login />
+                    </Route>
+                    <Route path="/profile-page">
+                        <Profile />
                     </Route>
                     <Route path="/">
                         <Home />

@@ -2,7 +2,13 @@ import styles from "./Style";
 import { Link } from "react-router-dom";
 import IndividualTask from "../IndividualTask/IndividualTask";
 
-export default function TaskList({tasks}) {
+export default function TaskList({ tasks, /** isMemberSpecific */ }) {
+    /**
+     * TODO
+     * If the ``isMemberSpecific`` prop is true,
+     * don't display "View All Tasks", because the passed in ``tasks``
+     * will be all of the tasks of a member.
+     */
     return (
         <styles.Wrapper>
             <h2>Recent Projects</h2>
