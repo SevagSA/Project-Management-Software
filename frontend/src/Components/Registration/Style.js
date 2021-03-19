@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const RegisterInfoHolder = styled.div`
-    width: 70%;
+    max-width: 960px;
     flex: 0.20;
 `;
 
