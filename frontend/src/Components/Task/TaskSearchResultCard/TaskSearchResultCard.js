@@ -18,8 +18,7 @@ export default function TaskSearchResultCard({task}) {
             </styles.Ul>
             <Link exact to={`tasks/${task.id}`}>
                 <styles.TaskDetailBtn>
-                    View Task
-                    <ArrowForwardIosIcon style={styles.ArrowIcon} />
+                    View Task <ArrowForwardIosIcon style={styles.ArrowIcon} />
                 </styles.TaskDetailBtn>
             </Link>
         </styles.Wrapper>

@@ -1,10 +1,12 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import styles from "./Styles";
 import {tasks, status} from "../../../DummyData";
+import {useLocation} from "react-router-dom";
 import TaskSearchResultCard from "../TaskSearchResultCard/TaskSearchResultCard";
 
 export default function ViewTasks() {
     const [searchResults, setSearchResults] = useState(tasks);
+    const [statusURLParam, setStatusURLParam] = useState(new URLSearchParams(useLocation().search).get("status"));
 
     const searchTaskByTitle = (e) => {
         const query = e.target.value.toLowerCase();
@@ -12,18 +14,31 @@ export default function ViewTasks() {
         setSearchResults(result);
     };
 
-
     const searchTaskByPM = (e) => {
         const query = e.target.value.toLowerCase();
         const result = tasks.filter(e => e.PM.toLowerCase().includes(query));
         setSearchResults(result);
     };
 
-    const searchTaskByStatus = (e) => {
-        const query = e.target.value;
-        const result = tasks.filter(e => e.status === (query));
+    const searchTaskByStatus = (e = null, statusURLParam = null) => {
+        if (e === null && statusURLParam === null) {
+            return;
+        }
+        let query;
+        if (e === null) {
+            query=statusURLParam.toLowerCase();
+        } else if (statusURLParam === null) {
+            query = e.target.value.toLowerCase();
+        }
+        const result = tasks.filter(e => e.status.toLowerCase() === (query));
         setSearchResults(result);
     };
+
+    useEffect(() => {
+        if (statusURLParam !== null) {
+            searchTaskByStatus(null, statusURLParam);
+        }
+    }, [statusURLParam])
 
     return (
         <styles.Wrapper>

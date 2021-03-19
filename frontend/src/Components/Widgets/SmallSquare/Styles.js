@@ -14,17 +14,29 @@ const TaskStatus = styled.p`
     color: grey;
 `;
 
+const TaskDetailBtn = styled.button`
+    position: absolute;
+    bottom: 5px;
+    background-color: #1727b3;
+    border: none;
+    color: white;
+    padding: 5px;
+    right: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+`;
+
 const ArrowIcon = {
-    position: "absolute",
-    right: "5",
-    bottom: "5",
-    fontSize: "16px",
+    fontSize: "13px",
 };
 
 const styles = {
     Wrapper,
     TaskStatus,
-    ArrowIcon
+    ArrowIcon,
+    TaskDetailBtn
 }
 
 export default styles;
