@@ -3,37 +3,44 @@
 const tasks = [
     {
         "id": "1",
-        "title": "Frontend sprint",
+        "title": "Requirement Elicitation",
         "status": "Completed",
         "description": "Lorem ipsum dolor sit amet.",
-        "PM": "Johnny",
+        "PM": "Hagop",
         "staff": ["Alex", "Jason", "Kattie", "Alice"]
     },
     {
         "id": "2",
-        "title": "Frontend sprint2",
+        "title": "UI Prototyping",
         "status": "In progress",
         "description": "Lorem ipsum dolor sit amet.2",
-        "PM": "Johnny2",
+        "PM": "Ani",
         "staff": ["Alex", "Jason", "Kattie", "Alice"]
     },
     {
         "id": "3",
-        "title": "Frontend sprint3",
+        "title": "Class Diagrams",
         "status": "Not started",
         "description": "Lorem ipsum dolor sit amet.3",
-        "PM": "Johnny3",
+        "PM": "Setta",
         "staff": ["Alex", "Jason", "Kattie", "Alice"]
     },
     {
         "id": "4",
-        "title": "Frontend sprint4",
+        "title": "Backend Development",
         "status": "On hold",
         "description": "Lorem ipsum dolor sit amet.4",
-        "PM": "Johnny4",
+        "PM": "Yervant",
         "staff": ["Alex", "Jason", "Kattie", "Alice"]
     },
 
 ];
 
-export {tasks};
+const status = [
+    "Completed",
+    "In progress",
+    "Not started",
+    "On hold",
+]
+
+export {tasks, status};
