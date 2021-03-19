@@ -1,6 +1,5 @@
 import styles from "./Styles";
 import { tasks } from "../../DummyData";
-import { Link } from "react-router-dom";
 import SmallSquare from "../Widgets/SmallSquare/SmallSquare";
 import TaskList from "../Widgets/Task/TaskList/TaskList";
 import ActivityWidget from "../Widgets/Activity/ActivityWidget/ActivityWidget";

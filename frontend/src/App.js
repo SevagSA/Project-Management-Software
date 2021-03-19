@@ -11,12 +11,13 @@ import ViewTasks from "./Components/Task/ViewTasks/ViewTasks";
 import MessageRoom from "./Components/Message/MessageRoom";
 import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
+import AdminRegistration from "./Components/AdminRegistration/AdminRegistration";
 
 function App() {
   return (
     <Router>
         <div>
-        <SidebarNav />
+            <SidebarNav />
             <Switch>
                 <Route path="/messages">
                     <MessageRoom />
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path="/create-task">
                     <CreateTask />
+                </Route>
+                <Route path="/admin-registration">
+                    <AdminRegistration />
                 </Route>
                 <Route path="/">
                     <Home />
