@@ -17,38 +17,39 @@ const Wrapper = styled.div`
     padding: 20px;
 `;
 
-const RegisterInfoHolder = styled.div`
+const AuthFormInfoHolder = styled.div`
     max-width: 960px;
     flex: 0.20;
 `;
 
-const RegisterTitle = styled.h3`
+const AuthFormTitle = styled.h3`
     text-align: center;
 `;
 
-const RegisterDescription = styled.p`
+const AuthFormDescription = styled.p`
     text-align: center;
 `;
 
-const RegisterFormHolder = styled.div`
+const AuthFormHolder = styled.div`
     width: 100%;
     flex: 0.80;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
 `;
 
-const RegisterForm = styled.form`
+const AuthForm = styled.form`
     text-align: center;
 `;
 
-const RegisterFormFieldHolder = styled.div`
+const AuthFormFieldHolder = styled.div`
     text-align: left;
     margin-bottom: 10px;
 `;
 
-const RegisterFormSubmitInput = styled.input`
+const AuthFormSubmitInput = styled.input`
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -57,13 +58,14 @@ const RegisterFormSubmitInput = styled.input`
     background-color: #1727b3;
     cursor: pointer;
     color: white;
+    margin-bottom: 25px;
 `;
 
-const RegisterFormLabel = styled.label`
+const AuthFormLabel = styled.label`
     color: #1727b3
 `;
 
-const RegisterFormInput = styled.input`
+const AuthFormInput = styled.input`
     margin: 5px 0px 20px 0px;
     height: 30px;
     width: 430px;
@@ -77,15 +79,15 @@ const RegisterFormInput = styled.input`
 const styles = {
     ParentWrapper,
     Wrapper,
-    RegisterInfoHolder,
-    RegisterTitle,
-    RegisterDescription,
-    RegisterFormHolder,
-    RegisterForm,
-    RegisterFormFieldHolder,
-    RegisterFormSubmitInput,
-    RegisterFormLabel,
-    RegisterFormInput
+    AuthFormInfoHolder,
+    AuthFormTitle,
+    AuthFormDescription,
+    AuthFormHolder,
+    AuthForm,
+    AuthFormFieldHolder,
+    AuthFormSubmitInput,
+    AuthFormLabel,
+    AuthFormInput
 };
 
 export default styles;

@@ -11,7 +11,8 @@ import ViewTasks from "./Components/Task/ViewTasks/ViewTasks";
 import MessageRoom from "./Components/Message/MessageRoom";
 import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
 import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
-import Registration from "./Components/Registration/Registration";
+import Registration from "./Components/Authentication/Registration";
+import Login from "./Components/Authentication/Login";
 
 function App() {
     return (
@@ -36,6 +37,9 @@ function App() {
                     </Route>
                     <Route path="/staff-registration">
                         <Registration isAdmin={false} />
+                    </Route>
+                    <Route path="/login">
+                        <Login />
                     </Route>
                     <Route path="/">
                         <Home />
