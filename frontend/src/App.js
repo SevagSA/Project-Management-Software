@@ -4,7 +4,7 @@ import {
     Route,
 } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
-
+import styled from "styled-components";
 import Home from "./Components/Home/Home";
 import CreateTask from "./Components/Task/CreateTask";
 import ViewTasks from "./Components/Task/ViewTasks/ViewTasks";
@@ -16,12 +16,16 @@ import Login from "./Components/Authentication/Login";
 import Profile from "./Components/Profile/Profile";
 import ViewMembers from "./Components/Members/ViewMembers";
 import GlobalSearchBar from "./Components/GlobalSearchBar/GlobalSearchBar";
+import Notificatoin from "./Components/Notification/Notification";
 
 function App() {
     return (
         <Router>
             <div>
-                <GlobalSearchBar />
+                <TopNav>
+                    <GlobalSearchBar />
+                    <Notificatoin />
+                </TopNav>
                 <hr />
                 <SidebarNav />
                 <Switch>
@@ -57,9 +61,16 @@ function App() {
                     </Route>
                 </Switch>
             </div>
+
             <GlobalStyle />
         </Router>
     );
 }
+
+const TopNav = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+`;
 
 export default App;

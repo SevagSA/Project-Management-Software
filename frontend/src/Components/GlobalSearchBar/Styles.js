@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.form`
-    margin-bottom: 10px;
+    flex: 0.90;
 `;
 
 const SearchInput = styled.input`
