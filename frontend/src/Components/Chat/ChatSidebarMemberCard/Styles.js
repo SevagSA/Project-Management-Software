@@ -8,6 +8,7 @@ const Wrapper = styled.div`
     background-color: white;
     padding: 0px 10px;
     border-bottom: 1px solid #e8e8e8;
+    cursor: pointer;
 `;
 
 const ProfilePic = styled.img`

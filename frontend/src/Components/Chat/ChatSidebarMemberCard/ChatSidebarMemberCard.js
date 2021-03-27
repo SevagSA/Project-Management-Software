@@ -1,21 +1,12 @@
 import styles from "./Styles";
 import CheckIcon from '@material-ui/icons/Check';
 
-export default function ChatSidebarMemberCard({ messageAndMember }) {
+
+export default function ChatSidebarMemberCard({ messageAndMember, clickHandler }) {
     const hasRead = messageAndMember.message.read;
-    // const messageAndMember = {
-    //     "member": {
-    //         "name": "Johnny",
-    //         "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
-    //     },
-    //     "message": {
-    //         "content": "Hey! Did you get the chance to review my work?",
-    //         "timestamp": "02/12/21",
-    //         "read": true,
-    //     },
-    // };
     return (
-        <styles.Wrapper>
+        <styles.Wrapper onClick={clickHandler}>
+            <span chatroomid={messageAndMember.chatRoomId}></span>
             <styles.ProfilePic src={messageAndMember.member.profile_pic} />
             <styles.ContentHolder>
                 <styles.ChatTitle>{messageAndMember.member.name}</styles.ChatTitle>

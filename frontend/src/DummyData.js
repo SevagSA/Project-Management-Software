@@ -68,4 +68,234 @@ const members = [
 
 const roles = ["Backend Developer", "Project Manager", "Product Manager", "UX Designer"];
 
-export { tasks, status, members, roles };
+// this holds the most recent message between contacts
+// it is used to display the lates message in the chat sidebar
+const messagesAndMembers = [
+    {
+        "chatRoomId": 1,
+        "member": {
+            "name": "Johnny1",
+            "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+        },
+        "message": {
+            "content": "Hey! Did you get the chance to review my work?",
+            "timestamp": "02/12/21",
+            "read": true,
+        },
+    },
+    {
+        "chatRoomId": 2,
+        "member": {
+            "name": "Johnny2",
+            "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+        },
+        "message": {
+            "content": "Hey! Did you get the chance to review my work?",
+            "timestamp": "02/12/21",
+            "read": true,
+        },
+    },
+    {
+        "chatRoomId": 3,
+        "member": {
+            "name": "Johnny3",
+            "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+        },
+        "message": {
+            "content": "Hey! Did you get the chance to review my work?",
+            "timestamp": "02/12/21",
+            "read": true,
+        },
+    },
+    {
+        "chatRoomId": 4,
+        "member": {
+            "name": "Johnny4",
+            "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+        },
+        "message": {
+            "content": "Hey! Did you get the chance to review my work?",
+            "timestamp": "02/12/21",
+            "read": true,
+        },
+    },
+    {
+        "chatRoomId": 5,
+        "member": {
+            "name": "Johnny5",
+            "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+        },
+        "message": {
+            "content": "Hey! Did you get the chance to review my work?",
+            "timestamp": "02/12/21",
+            "read": true,
+        },
+    },
+    {
+        "chatRoomId": 6,
+        "member": {
+            "name": "Johnny6",
+            "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+        },
+        "message": {
+            "content": "Hey! Did you get the chance to review my work?",
+            "timestamp": "02/12/21",
+            "read": true,
+        },
+    }
+];
+
+const chatRooms = [
+    {
+        "chatRoomId": 1,
+        "members": [
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+        ],
+        "messages": [
+            {
+                "sender": "Johnny6",
+                "timstamp": "14/3/2021",
+                "message": "Hey Johnny1, how are you?"
+            },
+            {
+                "sender": "Johnny1",
+                "timstamp": "14/3/2021",
+                "message": "hi Johnny6, i'm good thanks :)"
+            },
+        ]
+    },
+    {
+        "chatRoomId": 2,
+        "members": [
+            {
+                "name": "Johnny2",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+        ],
+        "messages": [
+            {
+                "sender": "Johnny3",
+                "timstamp": "14/3/2021",
+                "message": "Hey Johnny1, how are you?"
+            },
+            {
+                "sender": "Johnny1",
+                "timstamp": "14/3/2021",
+                "message": "hi Johnny6, i'm good thanks :)"
+            },
+        ]
+    },
+    {
+        "chatRoomId": 3,
+        "members": [
+            {
+                "name": "Johnny3",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+        ],
+        "messages": [
+            {
+                "sender": "Johnny6",
+                "timstamp": "14/3/2021",
+                "message": "Hey Johnny1, how are you?"
+            },
+            {
+                "sender": "Johnny1",
+                "timstamp": "14/3/2021",
+                "message": "hi Johnny6, i'm good thanks :)"
+            },
+        ]
+    },
+    {
+        "chatRoomId": 4,
+        "members": [
+            {
+                "name": "Johnny4",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+        ],
+        "messages": [
+            {
+                "sender": "Johnny6",
+                "timstamp": "14/3/2021",
+                "message": "Hey Johnny1, how are you?"
+            },
+            {
+                "sender": "Johnny1",
+                "timstamp": "14/3/2021",
+                "message": "hi Johnny6, i'm good thanks :)"
+            },
+        ]
+    },
+    {
+        "chatRoomId": 5,
+        "members": [
+            {
+                "name": "Johnny5",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+        ],
+        "messages": [
+            {
+                "sender": "Johnny6",
+                "timstamp": "14/3/2021",
+                "message": "Hey Johnny1, how are you?"
+            },
+            {
+                "sender": "Johnny1",
+                "timstamp": "14/3/2021",
+                "message": "hi Johnny6, i'm good thanks :)"
+            },
+        ]
+    },
+    {
+        "chatRoomId": 6,
+        "members": [
+            {
+                "name": "Johnny6",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+            {
+                "name": "Johnny1",
+                "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+            },
+        ],
+        "messages": [
+            {
+                "sender": "Johnny6",
+                "timstamp": "14/3/2021",
+                "message": "Hey Johnny1, how are you?"
+            },
+            {
+                "sender": "Johnny1",
+                "timstamp": "14/3/2021",
+                "message": "hi Johnny6, i'm good thanks :)"
+            },
+        ]
+    }
+]
+
+export { tasks, status, members, roles, messagesAndMembers, chatRooms };
