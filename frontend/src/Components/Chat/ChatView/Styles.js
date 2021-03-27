@@ -12,7 +12,6 @@ const InfoBar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rebeccapurple;
     padding: 0px 20px;
     background-color: #1735bd;
     color: white;

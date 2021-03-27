@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ParentWrapper = styled.div`
-    height: 97vh;
+    height: 92vh;
     display: flex;
     justify-content: center;
     align-items: center;

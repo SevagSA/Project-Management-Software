@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    min-height: 97vh;
+    min-height: 92vh;
 `;
 
 const ProfileContentHolder = styled.div`

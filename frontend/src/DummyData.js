@@ -47,22 +47,32 @@ const members = [
     {
         "name": "Hagop",
         "role": "Project Manager",
+        "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+
     },
     {
         "name": "Alex",
         "role": "Full-Stack Developer",
+        "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+
     },
     {
         "name": "Jason",
         "role": "UX Designer",
+        "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+
     },
     {
         "name": "Kattie",
         "role": "Product Manager",
+        "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+
     },
     {
         "name": "Alice",
         "role": "Backend Developer",
+        "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
+
     },
 ];
 
