@@ -16,7 +16,6 @@ export default function ChatView({ chatRoomId }) {
      */
     useEffect(() => {
         setChatRoom(chatRooms.find(e => {
-            console.log(chatRoomId === null ? 1 : chatRoomId);
             return e.chatRoomId == (chatRoomId === null ? 1 : chatRoomId)
         }))
     });

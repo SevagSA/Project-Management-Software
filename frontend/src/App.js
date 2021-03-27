@@ -15,11 +15,14 @@ import Registration from "./Components/Authentication/Registration";
 import Login from "./Components/Authentication/Login";
 import Profile from "./Components/Profile/Profile";
 import ViewMembers from "./Components/Members/ViewMembers";
+import GlobalSearchBar from "./Components/GlobalSearchBar/GlobalSearchBar";
 
 function App() {
     return (
         <Router>
             <div>
+                <GlobalSearchBar />
+                <hr />
                 <SidebarNav />
                 <Switch>
                     <Route path="/chat">
