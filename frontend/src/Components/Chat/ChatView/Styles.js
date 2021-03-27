@@ -37,7 +37,8 @@ const InfoIconStyles = {
 };
 
 const Chat = styled.div`
-    flex: 0.85
+    flex: 0.85;
+    overflow: scroll;
 `;
 
 const ChatInputForm = styled.form`

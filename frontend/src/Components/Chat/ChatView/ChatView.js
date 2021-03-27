@@ -1,6 +1,7 @@
 import styles from "./Styles";
 import { useState, useEffect } from "react";
-import { messagesAndMembers, chatRooms } from "../../../DummyData"
+import { chatRooms } from "../../../DummyData"
+import Message from "../Message/Message";
 import InfoIcon from '@material-ui/icons/Info';
 
 export default function ChatView({ chatRoomId }) {
@@ -32,6 +33,9 @@ export default function ChatView({ chatRoomId }) {
                 </styles.ActionButtonHolder>
             </styles.InfoBar>
             <styles.Chat>
+                {chatRoom.messages.map(message => {
+                    return <Message message={message} />
+                })}
             </styles.Chat>
             <styles.ChatInputForm>
                 <styles.ChatTextInput />

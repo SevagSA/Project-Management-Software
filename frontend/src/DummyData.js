@@ -154,7 +154,7 @@ const chatRooms = [
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
             {
-                "name": "Johnny1",
+                "name": "Johnny",
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
         ],
@@ -162,10 +162,10 @@ const chatRooms = [
             {
                 "sender": "Johnny6",
                 "timstamp": "14/3/2021",
-                "message": "Hey Johnny1, how are you?"
+                "message": "Hey Johnny, how are you?"
             },
             {
-                "sender": "Johnny1",
+                "sender": "Johnny",
                 "timstamp": "14/3/2021",
                 "message": "hi Johnny6, i'm good thanks :)"
             },
@@ -179,7 +179,7 @@ const chatRooms = [
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
             {
-                "name": "Johnny1",
+                "name": "Johnny",
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
         ],
@@ -187,12 +187,12 @@ const chatRooms = [
             {
                 "sender": "Johnny3",
                 "timstamp": "14/3/2021",
-                "message": "Hey Johnny1, how are you?"
+                "message": "Hey Johnny, how are you?"
             },
             {
-                "sender": "Johnny1",
+                "sender": "Johnny",
                 "timstamp": "14/3/2021",
-                "message": "hi Johnny6, i'm good thanks :)"
+                "message": "hi Johnny2, i'm good thanks :)"
             },
         ]
     },
@@ -204,7 +204,7 @@ const chatRooms = [
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
             {
-                "name": "Johnny1",
+                "name": "Johnny",
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
         ],
@@ -212,12 +212,12 @@ const chatRooms = [
             {
                 "sender": "Johnny6",
                 "timstamp": "14/3/2021",
-                "message": "Hey Johnny1, how are you?"
+                "message": "Hey Johnny, how are you?"
             },
             {
-                "sender": "Johnny1",
+                "sender": "Johnny",
                 "timstamp": "14/3/2021",
-                "message": "hi Johnny6, i'm good thanks :)"
+                "message": "hi Johnny3, i'm good thanks :)"
             },
         ]
     },
@@ -229,7 +229,7 @@ const chatRooms = [
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
             {
-                "name": "Johnny1",
+                "name": "Johnny",
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
         ],
@@ -237,12 +237,12 @@ const chatRooms = [
             {
                 "sender": "Johnny6",
                 "timstamp": "14/3/2021",
-                "message": "Hey Johnny1, how are you?"
+                "message": "Hey Johnny, how are you?"
             },
             {
-                "sender": "Johnny1",
+                "sender": "Johnny",
                 "timstamp": "14/3/2021",
-                "message": "hi Johnny6, i'm good thanks :)"
+                "message": "hi Johnny4, i'm good thanks :)"
             },
         ]
     },
@@ -254,7 +254,7 @@ const chatRooms = [
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
             {
-                "name": "Johnny1",
+                "name": "Johnny",
                 "profile_pic": `${process.env.PUBLIC_URL}/assets/images/profile_page.png`
             },
         ],
@@ -262,12 +262,12 @@ const chatRooms = [
             {
                 "sender": "Johnny6",
                 "timstamp": "14/3/2021",
-                "message": "Hey Johnny1, how are you?"
+                "message": "Hey Johnny, how are you?"
             },
             {
-                "sender": "Johnny1",
+                "sender": "Johnny",
                 "timstamp": "14/3/2021",
-                "message": "hi Johnny6, i'm good thanks :)"
+                "message": "hi Johnny5, i'm good thanks :)"
             },
         ]
     },
@@ -287,10 +287,10 @@ const chatRooms = [
             {
                 "sender": "Johnny6",
                 "timstamp": "14/3/2021",
-                "message": "Hey Johnny1, how are you?"
+                "message": "Hey Johnny, how are you?"
             },
             {
-                "sender": "Johnny1",
+                "sender": "Johnny",
                 "timstamp": "14/3/2021",
                 "message": "hi Johnny6, i'm good thanks :)"
             },
