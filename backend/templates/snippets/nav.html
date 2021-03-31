@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'account:login' %}">Login</a></li>
+        <li><a href="{% url  'account:register' %}">Register</a></li>
+        <li><a href="{% url  'account:update' %}">Update</a></li>
+        {% if user.is_authenticated %}
+        <li>You are logged in</li>
+        {% endif %}
+        <li><a href="{% url  'account:logout' %}">Logout</a></li>
+    </ul>
+</nav>
