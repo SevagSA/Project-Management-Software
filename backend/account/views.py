@@ -54,4 +54,4 @@ class UpdateUserView(LoginRequiredMixin, generic.UpdateView):
 def logout_view(request):
     logout(request)
     messages.success(request, "Logged out")
-    # TODO return redirect_to_nxt(request, "account:index")
+    return redirect_to_nxt(request, "account:login")
