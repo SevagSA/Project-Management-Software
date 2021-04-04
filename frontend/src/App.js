@@ -16,7 +16,7 @@ import Login from "./Components/Authentication/Login";
 import Profile from "./Components/Profile/Profile";
 import ViewMembers from "./Components/Members/ViewMembers";
 import GlobalSearchBar from "./Components/GlobalSearchBar/GlobalSearchBar";
-import Notificatoin from "./Components/Notification/Notification";
+import Notification from "./Components/Notification/Notification";
 
 function App() {
     return (
@@ -24,7 +24,7 @@ function App() {
             <div>
                 <TopNav>
                     <GlobalSearchBar />
-                    <Notificatoin />
+                    <Notification />
                 </TopNav>
                 <hr />
                 <SidebarNav />

@@ -7,7 +7,7 @@ import InfoIcon from '@material-ui/icons/Info';
 export default function ChatView({ chatRoomId }) {
     // by default, return the first chatRoom
     const [chatRoom, setChatRoom] = useState(
-        chatRooms.find(e => { return e.chatRoomId == 1 }));
+        chatRooms.find(e => { return e.chatRoomId === 1 }));
     /**
      * With Django, you would return the entire chat room
      * (with all messages) from an API request. For now, 
@@ -16,7 +16,7 @@ export default function ChatView({ chatRoomId }) {
      */
     useEffect(() => {
         setChatRoom(chatRooms.find(e => {
-            return e.chatRoomId == (chatRoomId === null ? 1 : chatRoomId)
+            return e.chatRoomId === (chatRoomId === null ? 1 : chatRoomId)
         }))
     });
     return (
