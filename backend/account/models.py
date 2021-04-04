@@ -84,3 +84,15 @@ class Member(AbstractBaseUser):
     class Meta:
         verbose_name = "Member"
         verbose_name_plural = "Members"
+
+
+class Organization(models.Model):
+    organization_name = models.CharField(max_length=50, unique=True)
+
+
+class Administrator(models.Model):
+    member = models.OneToOneField(Member, on_delete=models.CASCADE)
+
+
+class Staff(models.Model):
+    member = models.OneToOneField(Member, on_delete=models.CASCADE)
