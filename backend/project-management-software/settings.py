@@ -13,7 +13,7 @@ SECRET_KEY = env("SK")
 DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = "account.User"
+AUTH_USER_MODEL = "account.Member"
 
 
 # Application definition

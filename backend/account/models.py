@@ -2,45 +2,45 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
-class UserManager(BaseUserManager):
+class MemberManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         """
-        Creates and saves a User with the given email and
+        Creates and saves a Member with the given email and
         password
         """
         if not email:
-            raise ValueError("Users must have an email address")
+            raise ValueError("Members must have an email address")
 
         if not username:
-            raise ValueError("Users must have a username")
+            raise ValueError("Members must have a username")
 
-        user = self.model(
+        member = self.model(
             email=self.normalize_email(email),
             username=username
         )
 
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+        member.set_password(password)
+        member.save(using=self._db)
+        return member
 
     def create_superuser(self, email, username, password=None):
         """
         Creates and saves a superuser with the given email
         and password.
         """
-        user = self.create_user(
+        member = self.create_user(
             self.normalize_email(email),
             username=username,
             password=password
         )
-        user.is_admin = True
-        user.is_staff = True
-        user.is_superuser = True
-        user.save(using=self._db)
-        return user
+        member.is_admin = True
+        member.is_staff = True
+        member.is_superuser = True
+        member.save(using=self._db)
+        return member
 
 
-class User(AbstractBaseUser):
+class Member(AbstractBaseUser):
     email = models.EmailField(
         verbose_name="email address",
         max_length=100,
@@ -67,7 +67,7 @@ class User(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    objects = UserManager()
+    objects = MemberManager()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
@@ -82,5 +82,5 @@ class User(AbstractBaseUser):
         return True
 
     class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"
+        verbose_name = "Member"
+        verbose_name_plural = "Members"

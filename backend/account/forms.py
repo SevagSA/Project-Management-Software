@@ -1,12 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import widgets
-from .models import User
+from .models import Member
 
 
 class UserRegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
-        model = User
+        model = Member
         fields = UserCreationForm.Meta.fields + \
             ("email", "username", "first_name", "last_name",)
 
@@ -17,12 +17,12 @@ class UserLoginForm(forms.Form):
 
     def clean_email(self):
         email = self.cleaned_data["email"]
-        if not User.objects.filter(email__iexact=email).exists():
-            raise forms.ValidationError("User does not exist.")
+        if not Member.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError("Member does not exist.")
         return email
 
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Member
         fields = ["email", "username", "first_name", "last_name"]

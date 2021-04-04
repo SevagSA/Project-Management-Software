@@ -5,18 +5,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from .models import User
+from .models import Member
 from .forms import UserRegistrationForm, UserLoginForm, UserUpdateForm
 from .utils import redirect_to_nxt
 
+
 class RegisterUserView(generic.CreateView):
-    model = User
+    model = Member
     form_class = UserRegistrationForm
     template_name = "account/register.html"
 
     def get_success_url(self):
         # TODO return reverse('account:index')
         pass
+
 
 def login_view(request):
     form = UserLoginForm()
@@ -39,12 +41,12 @@ def login_view(request):
 
 
 class UpdateUserView(LoginRequiredMixin, generic.UpdateView):
-    model = User
+    model = Member
     form_class = UserUpdateForm
     template_name = "account/update_account.html"
 
     def get_object(self):
-        return User.objects.get(pk=self.request.user.id)
+        return Member.objects.get(pk=self.request.user.id)
 
     def get_success_url(self):
         messages.success(self.request, "Account udpated")
