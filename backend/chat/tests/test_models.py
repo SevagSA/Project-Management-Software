@@ -3,8 +3,8 @@ from django.test import TestCase
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
 
-from chat.models import ChatRoom, Message,
-from account.models import Member, Organization,
+from chat.models import ChatRoom, Message
+from account.models import Member, Organization
 
 
 class TestUserModel(TestCase):
@@ -26,11 +26,9 @@ class TestUserModel(TestCase):
             organization=self.organization,
             phone_number="308685087")
 
-        self.room = ChatRoom(room_name="chat room 1")
-
+        self.room = ChatRoom.objects.create(room_name="chat room 1")
         self.room.members.add(self.sender)
         self.room.members.add(self.receiver)
-        self.room.save()
 
         self.newest_message = Message.objects.create(
             sender=self.sender,
@@ -48,7 +46,7 @@ class TestUserModel(TestCase):
 
     def test_chat_room_uniqueness(self):
         with self.assertRaises(IntegrityError):
-            ChatRoom(room_name="chat room 1")
+            ChatRoom.objects.create(room_name="chat room 1")
 
     # Message model tests
 
