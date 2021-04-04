@@ -2,27 +2,40 @@ from django.test import TestCase
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
 
-from account.models import Member
+from account.models import Member, Organization, Staff, Administrator
 
 
 class TestUserModel(TestCase):
 
     def setUp(self):
-        self.user1 = Member.objects.create(
+        self.member = Member.objects.create(
             email="joe@doe.com", username="joeDoe123",
             first_name="joe", last_name="doe")
 
-    def test_model_create(self):
-        self.assertEqual(self.user1.email, "joe@doe.com",
+        self.organization = Organization.objects.create(
+            organization_name="Org 1")
+
+        self.staff = Staff.objects.create(member=self.member)
+
+        self.admin_member = Member.objects.create(
+            email="admin@admin.com", username="admin123",
+            first_name="adminFname", last_name="adminLname")
+
+        self.admin = Administrator.objects.create(member=self.admin_member)
+
+    # Member model tests
+
+    def test_member_model_create(self):
+        self.assertEqual(self.member.email, "joe@doe.com",
                          "Member obj should be created")
 
-    def test_email_uniqueness(self):
+    def test_member_email_uniqueness(self):
         with self.assertRaises(IntegrityError):
             Member.objects.create(
                 email="joe@doe.com", username="joeDoe1",
                 first_name="joe", last_name="doe")
 
-    def test_username_uniqueness(self):
+    def test_member_username_uniqueness(self):
         with self.assertRaises(IntegrityError):
             Member.objects.create(
                 email="joe1@doe1.com", username="joeDoe123",
@@ -50,5 +63,37 @@ class TestUserModel(TestCase):
 
     def test_create_user_without_email(self):
         with self.assertRaises(ValueError):
-            user = Member.objects.create_user(
+            Member.objects.create_user(
                 None, "userUsername", "pass123")
+
+    # Organization model tests
+
+    def test_organization_model_create(self):
+        self.assertEqual(self.organization.organization_name, "Org 1",
+                         "Organization obj should be created")
+
+    def test_organization_name_uniqueness(self):
+        with self.assertRaises(IntegrityError):
+            Organization.objects.create(organization_name="Org 1")
+
+    # Staff model tests
+
+    def test_staff_model_create(self):
+        self.assertEqual(self.staff.member.email, "joe@doe.com",
+                         "Staff obj should be created")
+
+    def test_staff_name_uniqueness(self):
+        with self.assertRaises(IntegrityError):
+            # A member should only have 1 staff account
+            Staff.objects.create(member=self.member)
+
+    # Administrator model tests
+
+    def test_administrator_model_create(self):
+        self.assertEqual(self.staff.member.email, "joe@doe.com",
+                         "Staff obj should be created")
+
+    def test_administrator_name_uniqueness(self):
+        with self.assertRaises(IntegrityError):
+            # A member should only have 1 administrator account
+            Administrator.objects.create(member=self.admin_member)
