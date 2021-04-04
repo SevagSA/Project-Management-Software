@@ -8,18 +8,22 @@ from account.models import Member, Organization, Staff, Administrator
 class TestUserModel(TestCase):
 
     def setUp(self):
-        self.member = Member.objects.create(
-            email="joe@doe.com", username="joeDoe123",
-            first_name="joe", last_name="doe")
-
         self.organization = Organization.objects.create(
             organization_name="Org 1")
+
+        self.member = Member.objects.create(
+            email="joe@doe.com", username="joeDoe123",
+            first_name="joe", last_name="doe",
+            organization=self.organization,
+            phone_number="123123123123")
 
         self.staff = Staff.objects.create(member=self.member)
 
         self.admin_member = Member.objects.create(
             email="admin@admin.com", username="admin123",
-            first_name="adminFname", last_name="adminLname")
+            first_name="adminFname", last_name="adminLname",
+            organization=self.organization,
+            phone_number="123123123123")
 
         self.admin = Administrator.objects.create(member=self.admin_member)
 
@@ -33,13 +37,17 @@ class TestUserModel(TestCase):
         with self.assertRaises(IntegrityError):
             Member.objects.create(
                 email="joe@doe.com", username="joeDoe1",
-                first_name="joe", last_name="doe")
+                first_name="joe", last_name="doe",
+                organization=self.organization,
+                phone_number="123123123123")
 
     def test_member_username_uniqueness(self):
         with self.assertRaises(IntegrityError):
             Member.objects.create(
                 email="joe1@doe1.com", username="joeDoe123",
-                first_name="joe", last_name="doe")
+                first_name="joe", last_name="doe",
+                organization=self.organization,
+                phone_number="123123123123")
 
     def test_create_superuser(self):
         super_user = Member.objects.create_superuser(

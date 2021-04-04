@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.conf import settings
 
 
 class MemberManager(BaseUserManager):
@@ -58,6 +59,12 @@ class Member(AbstractBaseUser):
         verbose_name="Last Name",
         max_length=50
     )
+    # TODO make this more robust
+    phone_number = models.CharField(max_length=15)
+    organization = models.ForeignKey(
+        "Organization", on_delete=models.CASCADE, null=True, blank=True)
+    is_organization_admin = models.BooleanField(default=False)
+    is_organization_staff = models.BooleanField(default=False)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -91,8 +98,10 @@ class Organization(models.Model):
 
 
 class Administrator(models.Model):
-    member = models.OneToOneField(Member, on_delete=models.CASCADE)
+    member = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Staff(models.Model):
-    member = models.OneToOneField(Member, on_delete=models.CASCADE)
+    member = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
