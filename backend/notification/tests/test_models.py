@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from django.test import TestCase
 from django.conf import settings
 
@@ -26,7 +26,7 @@ class TestNotificationModel(TestCase):
             phone_number="0938745934")
 
         pm = Staff.objects.create(member=from_member)
-        project = Project.objects.create(
+        self.project = Project.objects.create(
             project_manager=pm,
             name="UI Prototyping",
             description="Finish the prototyping on Figma",
@@ -37,19 +37,19 @@ class TestNotificationModel(TestCase):
                 We've done something similar before.",
         )
 
-        project.notification.create(
+        self.project.notification.create(
             to_member=to_member,
             from_member=from_member,
             # urls have not been setup yet. Use / for now.
             # This should link to the project detail page.
             action_url="/",
-            description=f"Project Created: f{project.name}",
+            description=f"Project Created: {self.project.name}",
         )
 
     def test_project_notification_create(self):
         self.assertEqual(
-            self.project.notification.to_member, "to@to.com",
+            Notification.objects.first().to_member.email, "to@to.com",
             "Project's notification's to_member should be to@to.com")
         self.assertEqual(
-            self.project.notification.from_member, "from@from.com",
+            Notification.objects.first().from_member.email, "from@from.com",
             "Project's notification's from_member should be from@from.com")

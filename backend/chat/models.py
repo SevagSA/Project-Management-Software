@@ -5,6 +5,8 @@ from django.db import models
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 
+from notification.models import Notification
+
 
 class ChatRoom(models.Model):
     room_name = models.CharField(max_length=50, unique=True)
@@ -12,7 +14,7 @@ class ChatRoom(models.Model):
         settings.AUTH_USER_MODEL, related_name="chat_room_members")
     connected_members = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, related_name="connected_members")
-    # notification = GenericRelation(Notification)
+    notification = GenericRelation(Notification)
     newest_message = models.OneToOneField(
         "Message", on_delete=models.CASCADE, blank=True, null=True)
     has_unread_msg = models.BooleanField(default=False)

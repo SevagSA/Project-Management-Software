@@ -1,8 +1,10 @@
 from django.db import models
 from django.conf import settings
-from django.db.models.fields import DateField, related
+from django.db.models.fields import DateField
+from django.contrib.contenttypes.fields import GenericRelation
 
 from account.models import Staff
+from notification.models import Notification
 
 
 class Activity(models.Model):
@@ -27,13 +29,13 @@ class Activity(models.Model):
 class Project(Activity):
     project_manager = models.OneToOneField(
         Staff, on_delete=models.CASCADE, related_name="project")
-    # notification = GenericRelation(Notification)
+    notification = GenericRelation(Notification)
 
 
 class Task(Activity):
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="tasks")
-    # notification = GenericRelation(Notification)
+    notification = GenericRelation(Notification)
 
 
 class Label(models.Model):
