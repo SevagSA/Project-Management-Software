@@ -9,7 +9,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 class ChatRoom(models.Model):
     room_name = models.CharField(max_length=50, unique=True)
     members = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name="members")
+        settings.AUTH_USER_MODEL, related_name="chat_room_members")
     connected_members = models.ManyToManyField(
         settings.AUTH_USER_MODEL, blank=True, related_name="connected_members")
     # notification = GenericRelation(Notification)

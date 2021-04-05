@@ -10,7 +10,8 @@ from activity.models import Project, Task, Label
 class TestUserModel(TestCase):
 
     def setUp(self):
-        organization = Organization.objects.create("best org")
+        organization = Organization.objects.create(
+            organization_name="best org")
 
         pm = Member.objects.create(
             email="pm@pm.com", username="pm123",
@@ -24,6 +25,7 @@ class TestUserModel(TestCase):
             organization=organization,
             phone_number="86754768934")
 
+        pm = Staff.objects.create(member=pm)
         self.project = Project.objects.create(
             project_manager=pm,
             name="UI Prototyping",
@@ -41,7 +43,7 @@ class TestUserModel(TestCase):
 
         self.task = Task.objects.create(
             project=self.project,
-            name="Home Screen Protoyping",
+            name="Home Screen Prototyping",
             description="Finish the prototyping on Figma",
             status=settings.IN_PROGRESS,
             start_date=datetime(2021, 2, 10),
@@ -69,12 +71,12 @@ class TestUserModel(TestCase):
     # Task model tests
 
     def test_task_model_create(self):
-        self.assertEqual(self.task.name, "Home Screen Protoyping",
+        self.assertEqual(self.task.name, "Home Screen Prototyping",
                          "Task obj should be created")
 
     def test_task_name_uniqueness(self):
         with self.assertRaises(IntegrityError):
-            Task.objects.create(name="Home Screen Protoyping")
+            Task.objects.create(name="Home Screen Prototyping")
 
     def test_task_start_date_before_deadline(self):
         self.assertEqual(self.task.start_date < self.task.deadline, True)
