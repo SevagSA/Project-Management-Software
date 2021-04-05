@@ -28,7 +28,8 @@ INSTALLED_APPS = [
 
     # local
     'account',
-    'chat'
+    'chat',
+    'activity'
 
     # 3rd party
 ]
@@ -124,3 +125,15 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = "/login/"
+
+TODO = "Todo"
+IN_PROGRESS = "In progress"
+COMPLETED = "Completed"
+ON_HOLD = "On hold"
+
+ACTIVITY_STATUS = (
+    (TODO, "Todo"),
+    (IN_PROGRESS, "In progress"),
+    (COMPLETED, "Completed"),
+    (ON_HOLD, "On hold"),
+)

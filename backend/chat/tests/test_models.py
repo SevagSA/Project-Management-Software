@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.test import TestCase
 from django.db import IntegrityError
-from django.contrib.auth.hashers import check_password
 
 from chat.models import ChatRoom, Message
 from account.models import Member, Organization
@@ -11,24 +10,24 @@ class TestUserModel(TestCase):
 
     def setUp(self):
 
-        self.organization = Organization.objects.create(
+        organization = Organization.objects.create(
             organization_name="Org 2")
 
         self.sender = Member.objects.create(
             email="sender@sender.com", username="sender123",
             first_name="sender", last_name="doe",
-            organization=self.organization,
+            organization=organization,
             phone_number="7654334567")
 
-        self.receiver = Member.objects.create(
+        receiver = Member.objects.create(
             email="receiver@receiver.com", username="receiver123",
             first_name="receiver", last_name="doe",
-            organization=self.organization,
+            organization=organization,
             phone_number="308685087")
 
         self.room = ChatRoom.objects.create(room_name="chat room 1")
         self.room.members.add(self.sender)
-        self.room.members.add(self.receiver)
+        self.room.members.add(receiver)
 
         self.newest_message = Message.objects.create(
             sender=self.sender,
@@ -44,7 +43,7 @@ class TestUserModel(TestCase):
         self.assertEqual(self.room.room_name, "chat room 1",
                          "ChatRoom obj should be created")
 
-    def test_chat_room_uniqueness(self):
+    def test_chat_room_name_uniqueness(self):
         with self.assertRaises(IntegrityError):
             ChatRoom.objects.create(room_name="chat room 1")
 

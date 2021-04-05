@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.shortcuts import reverse
-from django.contrib.auth import logout
 from django.contrib.auth.hashers import make_password
 
 

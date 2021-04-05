@@ -48,8 +48,7 @@ class Member(AbstractBaseUser):
         unique=True
     )
     username = models.CharField(
-        max_length=128, null=False,
-        blank=False, unique=True
+        max_length=128, unique=True
     )
     first_name = models.CharField(
         verbose_name="First Name",
@@ -62,7 +61,7 @@ class Member(AbstractBaseUser):
     # TODO make this more robust
     phone_number = models.CharField(max_length=15)
     organization = models.ForeignKey(
-        "Organization", on_delete=models.CASCADE, null=True, blank=True)
+        "Organization", on_delete=models.CASCADE, null=True, blank=False)
     is_organization_admin = models.BooleanField(default=False)
     is_organization_staff = models.BooleanField(default=False)
 
@@ -98,10 +97,20 @@ class Organization(models.Model):
 
 
 class Administrator(models.Model):
+    """
+    This class is created to prevent tedious db record
+    changes in the future, if this class were to have
+    different fields than its parent.
+    """
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class Staff(models.Model):
+    """
+    This class is created to prevent tedious db record
+    changes in the future, if this class were to have
+    different fields than its parent.
+    """
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
