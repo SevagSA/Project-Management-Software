@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     # local
     'account',
     'chat',
-    'activity'
+    'activity',
+    'notification'
 
     # 3rd party
 ]
