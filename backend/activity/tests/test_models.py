@@ -66,7 +66,8 @@ class TestActivityModel(TestCase):
             Project.objects.create(name="UI Prototyping")
 
     def test_project_start_date_before_deadline(self):
-        self.assertEqual(self.project.start_date < self.project.deadline, True)
+        self.assertEqual(self.project.start_date < self.project.deadline, True,
+                         "project.start_date should be < project.deadline")
 
     # Task model tests
 
@@ -79,4 +80,5 @@ class TestActivityModel(TestCase):
             Task.objects.create(name="Home Screen Prototyping")
 
     def test_task_start_date_before_deadline(self):
-        self.assertEqual(self.task.start_date < self.task.deadline, True)
+        self.assertEqual(self.task.start_date < self.task.deadline, True,
+                         "task.start_date should be < task.`deadline`")
