@@ -7,7 +7,7 @@ from account.models import Member, Staff, Organization
 from activity.models import Project, Task, Label
 
 
-class TestUserModel(TestCase):
+class TestActivityModel(TestCase):
 
     def setUp(self):
         organization = Organization.objects.create(
