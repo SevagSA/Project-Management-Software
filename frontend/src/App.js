@@ -29,35 +29,38 @@ function App() {
                 <hr />
                 <SidebarNav />
                 <Switch>
-                    <Route path="/chat">
+                    <Route exact path="/chat">
                         <ChatRoom />
                     </Route>
-                    <Route path="/tasks/:id">
+                    <Route exact path="/tasks/:id">
                         <TaskDetail />
                     </Route>
-                    <Route path="/tasks">
+                    <Route exact path="/tasks">
                         <ViewTasks />
                     </Route>
-                    <Route path="/create-task">
+                    <Route exact path="/create-task">
                         <CreateTask />
                     </Route>
-                    <Route path="/admin-registration">
+                    <Route exact path="/admin-registration">
                         <Registration isAdmin={true} />
                     </Route>
-                    <Route path="/staff-registration">
+                    <Route exact path="/staff-registration">
                         <Registration isAdmin={false} />
                     </Route>
-                    <Route path="/login">
+                    <Route exact path="/login">
                         <Login />
                     </Route>
-                    <Route path="/profile-page">
+                    <Route exact path="/profile-page">
                         <Profile />
                     </Route>
-                    <Route path="/members">
+                    <Route exact path="/members">
                         <ViewMembers />
                     </Route>
-                    <Route path="/">
+                    <Route exact path="/">
                         <Home />
+                    </Route>
+                    <Route path="*">
+                        <p>404 | Not found</p>
                     </Route>
                 </Switch>
             </div>

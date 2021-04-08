@@ -10,15 +10,16 @@ export default function ChatView({ chatRoomId }) {
         chatRooms.find(e => { return e.chatRoomId === 1 }));
     /**
      * With Django, you would return the entire chat room
-     * (with all messages) from an API request. For now, 
-     * just return the messageAndMember which contains only
+     * (with all messages on the current page) from an API request.
+     * For now, just return the messageAndMember which contains only
      * the latest message.
      */
     useEffect(() => {
         setChatRoom(chatRooms.find(e => {
-            return e.chatRoomId === (chatRoomId === null ? 1 : chatRoomId)
+            return e.chatRoomId == (chatRoomId === null ? 1 : chatRoomId)
         }))
     });
+
     return (
         <styles.Wrapper>
             <styles.InfoBar>
