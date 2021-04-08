@@ -4,7 +4,7 @@ from account.models import Administrator, Member, Organization, Staff
 
 
 class OrganizationSerializer(serializers.ModelSerializer):
-    # redefined here to avoid unique constraint eror on get_or_create
+    # redefined here to avoid unique constraint error on get_or_create
     organization_name = serializers.CharField(max_length=50)
 
     class Meta:
@@ -23,7 +23,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
 class AdministratorSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Aministrator Model. This class also
+    Serializer for the Administrator Model. This class also
     acts as a base class for the StaffSerializer to keep code
     DRY.
     """
