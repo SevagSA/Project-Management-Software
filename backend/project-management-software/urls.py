@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
-    path("account/", include("account.api.urls")),
+    path("api/account/", include("account.api.urls")),
     path("admin/", admin.site.urls),
 
     # catch if the url is just the domain name
