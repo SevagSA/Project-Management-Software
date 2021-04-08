@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.conf import settings
 
+from rest_framework import status
+from rest_framework.response import Response
+
 
 class MemberManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -91,9 +94,25 @@ class Member(AbstractBaseUser):
         verbose_name = "Member"
         verbose_name_plural = "Members"
 
+    @staticmethod
+    def register_member(request, serializerClass):
+        """
+        Create a ``Member`` object to register a new member in
+        the software.
+        """
+        serializer = serializerClass(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class Organization(models.Model):
     organization_name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.organization_name
 
 
 class Administrator(models.Model):
@@ -105,6 +124,9 @@ class Administrator(models.Model):
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.member.email
+
 
 class Staff(models.Model):
     """
@@ -114,3 +136,6 @@ class Staff(models.Model):
     """
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.member.email

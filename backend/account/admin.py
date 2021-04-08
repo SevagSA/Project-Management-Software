@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Member
+from account.models import Member, Organization, Staff, Administrator
 
-# Register your models here.
-admin.site.register(Member)
+
+admin.site.register([Member, Organization, Staff, Administrator])
