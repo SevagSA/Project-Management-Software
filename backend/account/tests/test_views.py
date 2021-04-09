@@ -11,8 +11,8 @@ class TestUserView(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.user = Member.objects.create(
-            email="joe@doe.com", username="joeDoe123",
-            first_name="joe", last_name="doe", password=make_password("pass123"))
+            email="joe@doe.com", first_name="joe",
+            last_name="doe", password=make_password("pass123"))
         super(TestUserView, cls).setUpClass()
 
     def test_register_view(self):
@@ -24,7 +24,6 @@ class TestUserView(TestCase):
         self.client.post(reverse("account:register"),
                          {
             "email": "hello@world.com",
-            "username": "joeUsername",
             "first_name": "joe",
             "last_name": "doe",
             "password1": "a not commonly used password",
@@ -50,21 +49,17 @@ class TestUserView(TestCase):
         response = self.client.post("/login", {
             "email": self.user.email, "password": "pass123"})
         updated_email = f"{self.user.email}NEW"
-        updated_username = f"{self.user.username}NEW"
         updated_first_name = f"{self.user.first_name}NEW"
         updated_last_name = f"{self.user.last_name}NEW"
 
         self.client.post("/update", {
             "email": updated_email,
-            "username": updated_username,
             "first_name": updated_first_name,
             "last_name": updated_last_name,
         })
         user = Member.objects.first()
         self.assertEqual(user.email, updated_email,
                          f"email should be: {updated_email}")
-        self.assertEqual(user.username, updated_username,
-                         f"username should be: {updated_username}")
         self.assertEqual(user.first_name, updated_first_name,
                          f"email should be: {updated_first_name}")
         self.assertEqual(user.last_name, updated_last_name,

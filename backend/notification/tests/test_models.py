@@ -14,14 +14,12 @@ class TestNotificationModel(TestCase):
             organization_name="notification org")
 
         to_member = Member.objects.create(
-            email="to@to.com", username="to123",
-            first_name="toFirst", last_name="toLast",
+            email="to@to.com", first_name="toFirst", last_name="toLast",
             organization=organization,
             phone_number="2256457869")
 
         from_member = Member.objects.create(
-            email="from@from.com", username="from123",
-            first_name="fromFirst", last_name="fromLast",
+            email="from@from.com", first_name="fromFirst", last_name="fromLast",
             organization=organization,
             phone_number="0938745934")
 

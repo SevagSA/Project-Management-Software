@@ -14,14 +14,12 @@ class TestActivityModel(TestCase):
             organization_name="best org")
 
         pm = Member.objects.create(
-            email="pm@pm.com", username="pm123",
-            first_name="pmFirst", last_name="pmLast",
+            email="pm@pm.com", first_name="pmFirst", last_name="pmLast",
             organization=organization,
             phone_number="957683968")
 
         staff_member = Member.objects.create(
-            email="staff@staff.com", username="staff123",
-            first_name="staffFirst", last_name="staffLast",
+            email="staff@staff.com", first_name="staffFirst", last_name="staffLast",
             organization=organization,
             phone_number="86754768934")
 

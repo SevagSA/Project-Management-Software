@@ -17,7 +17,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        fields = ["email", "username", "first_name",
+        fields = ["email", "first_name",
                   "last_name", "phone_number", "organization"]
 
 
@@ -51,7 +51,6 @@ class AdministratorSerializer(serializers.ModelSerializer):
             organization_name=self.validated_data["member"]["organization"]["organization_name"])
         member = Member(
             email=self.validated_data["member"]["email"],
-            username=self.validated_data["member"]["username"],
             first_name=self.validated_data["member"]["first_name"],
             last_name=self.validated_data["member"]["last_name"],
             phone_number=self.validated_data["member"]["phone_number"],

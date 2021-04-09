@@ -14,7 +14,7 @@ export default function SidebarNav() {
         <styles.SidebarNavWrapper>
             <styles.SidebarNavProfileHolder>
                 <styles.ProfilePic src={`${process.env.PUBLIC_URL}/assets/images/profile_page.png`} />
-                <styles.Username>John Doe | Admin</styles.Username>
+                <styles.User>John Doe | Admin</styles.User>
             </styles.SidebarNavProfileHolder>
             <Link exact to="/"><SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />} /></Link>
             <Link exact to="/chat"><SidebarNavItem itemTitle={"Chat"} icon={<ChatIcon />} /></Link>

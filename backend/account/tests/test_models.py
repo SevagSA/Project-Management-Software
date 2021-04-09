@@ -12,16 +12,14 @@ class TestUserModel(TestCase):
             organization_name="Org 1")
 
         self.member = Member.objects.create(
-            email="joe@doe.com", username="joeDoe123",
-            first_name="joe", last_name="doe",
+            email="joe@doe.com", first_name="joe", last_name="doe",
             organization=self.organization,
             phone_number="123123123123")
 
         self.staff = Staff.objects.create(member=self.member)
 
         self.admin_member = Member.objects.create(
-            email="admin@admin.com", username="admin123",
-            first_name="adminFname", last_name="adminLname",
+            email="admin@admin.com", first_name="adminFname", last_name="adminLname",
             organization=self.organization,
             phone_number="123123123123")
 
@@ -36,22 +34,13 @@ class TestUserModel(TestCase):
     def test_member_email_uniqueness(self):
         with self.assertRaises(IntegrityError):
             Member.objects.create(
-                email="joe@doe.com", username="joeDoe1",
-                first_name="joe", last_name="doe",
-                organization=self.organization,
-                phone_number="123123123123")
-
-    def test_member_username_uniqueness(self):
-        with self.assertRaises(IntegrityError):
-            Member.objects.create(
-                email="joe1@doe1.com", username="joeDoe123",
-                first_name="joe", last_name="doe",
+                email="joe@doe.com", first_name="joe", last_name="doe",
                 organization=self.organization,
                 phone_number="123123123123")
 
     def test_create_superuser(self):
         super_user = Member.objects.create_superuser(
-            "super@user", "superUsername", "pass123")
+            "super@user", "pass123")
         self.assertEqual(super_user.is_admin, True,
                          "is_admin should be true")
         self.assertEqual(super_user.is_superuser, True,
@@ -61,18 +50,16 @@ class TestUserModel(TestCase):
 
     def test_create_user(self):
         user = Member.objects.create_user(
-            "user@user", "userUsername", "pass123")
+            "user@user", "pass123")
         self.assertEqual(user.email, "user@user",
                          "email should be user@user")
-        self.assertEqual(user.username, "userUsername",
-                         "username should be userUsername")
         self.assertEqual(check_password("pass123", user.password), True,
                          "check_password with pass123 should return True")
 
     def test_create_user_without_email(self):
         with self.assertRaises(ValueError):
             Member.objects.create_user(
-                None, "userUsername", "pass123")
+                None, "pass123")
 
     # Organization model tests
 

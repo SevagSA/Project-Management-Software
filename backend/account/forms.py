@@ -8,7 +8,7 @@ class UserRegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Member
         fields = UserCreationForm.Meta.fields + \
-            ("email", "username", "first_name", "last_name",)
+            ("email", "first_name", "last_name",)
 
 
 class UserLoginForm(forms.Form):
@@ -25,4 +25,4 @@ class UserLoginForm(forms.Form):
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = Member
-        fields = ["email", "username", "first_name", "last_name"]
+        fields = ["email", "first_name", "last_name"]

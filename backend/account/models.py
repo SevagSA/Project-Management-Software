@@ -7,7 +7,7 @@ from rest_framework.response import Response
 
 
 class MemberManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, password=None):
         """
         Creates and saves a Member with the given email and
         password
@@ -15,26 +15,21 @@ class MemberManager(BaseUserManager):
         if not email:
             raise ValueError("Members must have an email address")
 
-        if not username:
-            raise ValueError("Members must have a username")
-
         member = self.model(
             email=self.normalize_email(email),
-            username=username
         )
 
         member.set_password(password)
         member.save(using=self._db)
         return member
 
-    def create_superuser(self, email, username, password=None):
+    def create_superuser(self, email, password=None):
         """
         Creates and saves a superuser with the given email
         and password.
         """
         member = self.create_user(
             self.normalize_email(email),
-            username=username,
             password=password
         )
         member.is_admin = True
@@ -49,9 +44,6 @@ class Member(AbstractBaseUser):
         verbose_name="email address",
         max_length=100,
         unique=True
-    )
-    username = models.CharField(
-        max_length=128, unique=True
     )
     first_name = models.CharField(
         verbose_name="First Name",
@@ -79,7 +71,6 @@ class Member(AbstractBaseUser):
     objects = MemberManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]
 
     def __str__(self):
         return self.email

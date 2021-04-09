@@ -14,14 +14,12 @@ class TestChatModel(TestCase):
             organization_name="Org 2")
 
         self.sender = Member.objects.create(
-            email="sender@sender.com", username="sender123",
-            first_name="sender", last_name="doe",
+            email="sender@sender.com", first_name="sender", last_name="doe",
             organization=organization,
             phone_number="7654334567")
 
         receiver = Member.objects.create(
-            email="receiver@receiver.com", username="receiver123",
-            first_name="receiver", last_name="doe",
+            email="receiver@receiver.com", first_name="receiver", last_name="doe",
             organization=organization,
             phone_number="308685087")
 

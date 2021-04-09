@@ -27,7 +27,7 @@ const ProfilePic = styled.img`
     height: 60%;
 `;
 
-const Username = styled.p`
+const User = styled.p`
     color: white;
 `;
 
@@ -35,7 +35,7 @@ const styles = {
     SidebarNavWrapper,
     SidebarNavProfileHolder,
     ProfilePic,
-    Username
+    User
 };
 
 export default styles;
