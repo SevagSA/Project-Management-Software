@@ -75,6 +75,16 @@ const AuthFormInput = styled.input`
     color: #1727b3;
 `;
 
+const AuthFormSelect = styled.select`
+    margin: 5px 0px 20px 0px;
+    height: 30px;
+    width: 430px;
+    border: 1px solid #1727b3;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #1727b3;
+`;
+
 
 const styles = {
     ParentWrapper,
@@ -87,7 +97,8 @@ const styles = {
     AuthFormFieldHolder,
     AuthFormSubmitInput,
     AuthFormLabel,
-    AuthFormInput
+    AuthFormInput,
+    AuthFormSelect
 };
 
 export default styles;

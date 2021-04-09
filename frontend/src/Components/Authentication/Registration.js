@@ -1,27 +1,41 @@
 import styles from "./Style";
 import { Link, useHistory } from "react-router-dom";
 import { axiosInstance, normalizeStr } from "../../axiosInstance";
+import { useState, useEffect } from "react";
 
 export default function Registration({ isAdmin }) {
     let history = useHistory();
+    const [staffRoles, setStaffRoles] = useState([])
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
-        var endpoint = "account/register-" + (isAdmin ? "administrator/" : "staff/")
+        let endpoint = "account/register-" + (isAdmin ? "administrator/" : "staff/")
+        let body = {
+            member: {
+                email: normalizeStr(e.target.email.value),
+                first_name: normalizeStr(e.target.fName.value),
+                last_name: normalizeStr(e.target.lName.value),
+                phone_number: e.target.phoneNum.value,
+            },
+            password: e.target.password.value,
+            password2: e.target.password2.value
+        }
+
+        if (endpoint === "account/register-staff/") {
+            body["role"] = normalizeStr(e.target.role.value)
+            body["member"]["organization"] = {
+                // TODO: the staff will always bne registered by an admin.
+                // The staff's org will be the admin's org
+                "organization_name": "The current admin's org"
+            }
+        } else {
+            body["member"]["organization"] = {
+                "organization_name": normalizeStr(e.target.orgName.value)
+            }
+        }
+
         axiosInstance.
-            post(endpoint, {
-                member: {
-                    email: normalizeStr(e.target.email.value),
-                    first_name: normalizeStr(e.target.fName.value),
-                    last_name: normalizeStr(e.target.lName.value),
-                    phone_number: e.target.phoneNum.value,
-                    organization: {
-                        "organization_name": normalizeStr(e.target.orgName.value)
-                    }
-                },
-                password: e.target.password.value,
-                password2: e.target.password2.value
-            })
+            post(endpoint, body)
             .then(response => {
                 console.log("response:", response)
                 if (response.status === 201) {
@@ -37,6 +51,16 @@ export default function Registration({ isAdmin }) {
                 console.log(error.response.data)
             })
     }
+
+    useEffect(() => {
+        if (!isAdmin) {
+            axiosInstance.
+                get("account/staff-role-choices/")
+                .then(response => {
+                    setStaffRoles(response.data.roles)
+                })
+        }
+    }, [setStaffRoles, isAdmin])
 
     return (
         <styles.ParentWrapper>
@@ -63,44 +87,51 @@ export default function Registration({ isAdmin }) {
                     {/* TODO: make this form shorter. */}
                     <styles.AuthForm method="POST" onSubmit={handleFormSubmit}>
                         <styles.AuthFormFieldHolder>
-                            <styles.AuthFormLabel for="fName">First Name</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="fName">First Name</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="text" id="fName" required />
                             <br />
 
-                            <styles.AuthFormLabel for="lName">Last Name</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="lName">Last Name</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="text" id="lName" required />
                             <br />
-                            <styles.AuthFormLabel for="email">Email</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="email">Email</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="email" id="email" required />
                             <br />
-                            <styles.AuthFormLabel for="phoneNum">Phone Number</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="phoneNum">Phone Number</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="text" id="phoneNum" required />
                             <br />
                             {isAdmin ?
                                 <>
-                                    <styles.AuthFormLabel for="orgName">Organization Name</styles.AuthFormLabel>
+                                    <styles.AuthFormLabel htmlFor="orgName">Organization Name</styles.AuthFormLabel>
                                     <br />
                                     <styles.AuthFormInput type="text" id="orgName" required />
                                     <br />
                                 </>
                                 :
                                 <>
-                                    <styles.AuthFormLabel for="role">Staff Role</styles.AuthFormLabel>
+                                    <styles.AuthFormLabel htmlFor="role">Staff Role</styles.AuthFormLabel>
                                     <br />
-                                    <styles.AuthFormInput type="text" id="role" required />
+                                    <styles.AuthFormSelect id="role">
+                                        {staffRoles.map(e => {
+                                            return (
+                                                <option value={e[0]}>{e[0]}</option>
+                                            )
+                                        })}
+                                    </styles.AuthFormSelect>
+
                                     <br />
                                 </>
                             }
-                            <styles.AuthFormLabel for="password">Password</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="password">Password</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="password" id="password" required />
                             <br />
 
-                            <styles.AuthFormLabel for="password2">Password Confirmation</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="password2">Password Confirmation</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="password" id="password2" required />
                             <br />
@@ -111,7 +142,9 @@ export default function Registration({ isAdmin }) {
                             <styles.AuthFormSubmitInput type="submit" value="Register a Staff member" />
                         }
                     </styles.AuthForm>
-                    <Link exact to="/login" >Have an account? Login here</Link>
+                    <Link exact to="/login" >Have an account? Login here.</Link>
+                    {isAdmin ? <Link exact to="/staff-registration" >Registering your staff? Do so here.</Link>
+                        : <Link exact to="/admin-registration" >Not a staff member? Register as an admin here.</Link>}
                 </styles.AuthFormHolder>
             </styles.Wrapper>
         </styles.ParentWrapper>
