@@ -120,13 +120,12 @@ class Administrator(models.Model):
 
 
 class Staff(models.Model):
-    """
-    This class is created to prevent tedious db record
-    changes in the future, if this class were to have
-    different fields than its parent.
-    """
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
+    # Django 3.0+ : TextChoices
+    role = models.CharField(
+        max_length=20, choices=settings.STAFF_ROLES, default=settings.STAFF_MEMBER)
 
     def __str__(self):
         return self.member.email

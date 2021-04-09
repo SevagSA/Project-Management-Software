@@ -167,6 +167,8 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = "/login/"
 
+# Activity model
+
 TODO = "Todo"
 IN_PROGRESS = "In progress"
 COMPLETED = "Completed"
@@ -177,4 +179,23 @@ ACTIVITY_STATUS = (
     (IN_PROGRESS, "In progress"),
     (COMPLETED, "Completed"),
     (ON_HOLD, "On hold"),
+)
+
+# Account model
+PM = "Project Manager"
+FULL_STACK_DEVELOPER = "Full-Stack Developer"
+UX_DESIGNER = "UX Designer"
+PRODUCT_MANAGER = "Product Manager"
+BACKEND_DEVELOPER = "Backend Developer"
+FRONTEND_DEVELOPER = "Frontend Developer"
+STAFF_MEMBER = "Staff member"
+
+STAFF_ROLES = (
+    (PM, "Project Manager"),
+    (FULL_STACK_DEVELOPER, "Full-Stack Developer"),
+    (UX_DESIGNER, "UX Designer"),
+    (PRODUCT_MANAGER, "Product Manager"),
+    (BACKEND_DEVELOPER, "Backend Developer"),
+    (FRONTEND_DEVELOPER, "Frontend Developer"),
+    (STAFF_MEMBER, "Staff member"),
 )

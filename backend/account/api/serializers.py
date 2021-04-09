@@ -70,11 +70,12 @@ class AdministratorSerializer(serializers.ModelSerializer):
 class StaffSerializer(AdministratorSerializer):
     class Meta:
         model = Staff
-        fields = AdministratorSerializer.Meta.fields
+        fields = AdministratorSerializer.Meta.fields + ["role"]
 
     def save(self):
         member = self.defineMemberClassAttrbutes()
         member.is_organization_staff = True
         member.save()
-        staff = Staff.objects.create(member=member)
+        staff = Staff.objects.create(
+            member=member, role=self.validated_data["role"])
         return staff
