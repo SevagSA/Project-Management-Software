@@ -1,7 +1,30 @@
 import styles from "./Style";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { axiosInstance, normalizeStr } from "../../axiosInstance";
 
 export default function Login() {
+
+    let history = useHistory();
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        axiosInstance.
+            post("account/token/", {
+                email: normalizeStr(e.target.email.value),
+                password: e.target.password.value,
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    localStorage.setItem("access_token", response.data.access);
+                    localStorage.setItem("refresh_token", response.data.refresh);
+                    history.push("/");
+                }
+            })
+            .catch(error => {
+                console.log(error.response.data);
+            })
+    }
+
     return (
         <styles.ParentWrapper>
             <styles.Wrapper>
@@ -10,13 +33,13 @@ export default function Login() {
                 </styles.AuthFormInfoHolder>
                 <styles.AuthFormHolder>
 
-                    <styles.AuthForm method="POST">
+                    <styles.AuthForm method="POST" onSubmit={handleFormSubmit}>
                         <styles.AuthFormFieldHolder>
-                            <styles.AuthFormLabel for="email">Email</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="email">Email</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="email" id="email" required />
                             <br />
-                            <styles.AuthFormLabel for="password">Password</styles.AuthFormLabel>
+                            <styles.AuthFormLabel htmlFor="password">Password</styles.AuthFormLabel>
                             <br />
                             <styles.AuthFormInput type="password" id="password" required />
                             <br />

@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (
     register_administrator,
     register_staff,
-    get_all_staff_role_choices
+    get_all_staff_role_choices,
+    blacklist_token
 )
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -16,6 +17,9 @@ urlpatterns = [
     path("register-staff/", register_staff, name="register-staff"),
     path("staff-role-choices/", get_all_staff_role_choices,
          name="staff-role-choices"),
+
+    path("logout/blacklist_token/", blacklist_token,
+         name="blacklist_token"),
 
     # JWT
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

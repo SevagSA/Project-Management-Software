@@ -40,7 +40,7 @@ export default function Registration({ isAdmin }) {
                 console.log("response:", response)
                 if (response.status === 201) {
                     alert("Your account has been created.")
-                    history.push("/")
+                    history.push("/login")
                 }
                 return response.data
             })

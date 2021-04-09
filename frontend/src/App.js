@@ -2,6 +2,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Link,
 } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
@@ -17,6 +18,7 @@ import Profile from "./Components/Profile/Profile";
 import ViewMembers from "./Components/Members/ViewMembers";
 import GlobalSearchBar from "./Components/GlobalSearchBar/GlobalSearchBar";
 import Notification from "./Components/Notification/Notification";
+import Logout from "./Components/Authentication/Logout";
 
 function App() {
     return (
@@ -25,6 +27,7 @@ function App() {
                 <TopNav>
                     <GlobalSearchBar />
                     <Notification />
+                    <Link exact to="/logout">Logout</Link>
                 </TopNav>
                 <hr />
                 <SidebarNav />
@@ -49,6 +52,9 @@ function App() {
                     </Route>
                     <Route exact path="/login">
                         <Login />
+                    </Route>
+                    <Route exact path="/logout">
+                        <Logout />
                     </Route>
                     <Route exact path="/profile-page">
                         <Profile />
