@@ -28,10 +28,8 @@ class AdministratorSerializer(serializers.ModelSerializer):
     DRY.
     """
     member = MemberSerializer()
-    password = serializers.CharField(
-        style={"input_type": "password"}, write_only=True)
-    password2 = serializers.CharField(
-        style={"input_type": "password"}, write_only=True)
+    password = serializers.CharField(write_only=True)
+    password2 = serializers.CharField(write_only=True)
 
     class Meta:
         model = Administrator
@@ -42,7 +40,7 @@ class AdministratorSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Passwords must match.")
         return value
 
-    def defineMemberClassAttrbutes(self):
+    def define_member_class_attrbutes(self):
         """
         Returns a member class with its appropriate class attributes.
         This method is used for keeping code DRY with StaffSerializer.
@@ -60,7 +58,7 @@ class AdministratorSerializer(serializers.ModelSerializer):
         return member
 
     def save(self):
-        member = self.defineMemberClassAttrbutes()
+        member = self.define_member_class_attrbutes()
         member.is_organization_admin = True
         member.save()
         administrator = Administrator.objects.create(member=member)
@@ -73,7 +71,7 @@ class StaffSerializer(AdministratorSerializer):
         fields = AdministratorSerializer.Meta.fields + ["role"]
 
     def save(self):
-        member = self.defineMemberClassAttrbutes()
+        member = self.define_member_class_attrbutes()
         member.is_organization_staff = True
         member.save()
         staff = Staff.objects.create(

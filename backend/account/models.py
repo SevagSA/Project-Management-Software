@@ -87,16 +87,10 @@ class Member(AbstractBaseUser):
 
     @staticmethod
     def register_member(request, serializerClass):
-        """
-        Create a ``Member`` object to register a new member in
-        the software.
-        """
         serializer = serializerClass(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class Organization(models.Model):
@@ -122,7 +116,7 @@ class Administrator(models.Model):
 class Staff(models.Model):
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    
+
     # Django 3.0+ : TextChoices
     role = models.CharField(
         max_length=20, choices=settings.STAFF_ROLES, default=settings.STAFF_MEMBER)
