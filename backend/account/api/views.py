@@ -1,14 +1,14 @@
 from django.conf import settings
 
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .serializers import AdministratorSerializer, StaffSerializer
+from .serializers import AdministratorSerializer, StaffRegistrationSerializer, StaffSerializer
 
-from account.models import Member
+from account.models import Member, Staff
 
 
 @api_view(["POST", ])
@@ -18,7 +18,7 @@ def register_administrator(request):
 
 @api_view(["POST", ])
 def register_staff(request):
-    return Member.register_member(request, StaffSerializer)
+    return Member.register_member(request, StaffRegistrationSerializer)
 
 
 @api_view(["GET", ])
@@ -34,3 +34,8 @@ def blacklist_token(request):
         token.blacklist()
     except Exception as e:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class StaffViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer

@@ -85,6 +85,13 @@ class Member(AbstractBaseUser):
         verbose_name = "Member"
         verbose_name_plural = "Members"
 
+    def is_current_organization_admin(self, admin):
+        """
+        Return true if `admin` is_organization_admin of the
+        current user's organization.
+        """
+        return admin.is_organization_admin and admin.organization == self.organization
+
     @staticmethod
     def register_member(request, serializerClass):
         serializer = serializerClass(data=request.data)

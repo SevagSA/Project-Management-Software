@@ -8,7 +8,6 @@ from notification.models import Notification
 
 
 class Activity(models.Model):
-    # staff_members will not include the PM
     staff_members = models.ManyToManyField(
         Staff, related_name="%(app_label)s_%(class)s_related")
     name = models.CharField(max_length=40, unique=True)
@@ -20,14 +19,17 @@ class Activity(models.Model):
     end_date = DateField(null=True, blank=True)
     deadline = models.DateField()
     labels = models.ManyToManyField("Label", blank=True)
-    notes = models.TextField()
+    notes = models.TextField(null=True, blank=True)
 
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return self.name
+
 
 class Project(Activity):
-    project_manager = models.OneToOneField(
+    project_manager = models.ForeignKey(
         Staff, on_delete=models.CASCADE, related_name="project")
     notification = GenericRelation(Notification)
 

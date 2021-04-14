@@ -9,7 +9,7 @@ class OrganizationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Organization
-        fields = ["organization_name"]
+        fields = ["id", "organization_name"]
 
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -17,14 +17,14 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        fields = ["email", "first_name",
+        fields = ["id", "email", "first_name",
                   "last_name", "phone_number", "organization"]
 
 
 class AdministratorSerializer(serializers.ModelSerializer):
     """
     Serializer for the Administrator Model. This class also
-    acts as a base class for the StaffSerializer to keep code
+    acts as a base class for the StaffRegistrationSerializer to keep code
     DRY.
     """
     member = MemberSerializer()
@@ -33,7 +33,7 @@ class AdministratorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Administrator
-        fields = ["member", "password", "password2"]
+        fields = ["id", "member", "password", "password2"]
 
     def validate_password2(self, value):
         if value != self.initial_data["password"]:
@@ -43,7 +43,7 @@ class AdministratorSerializer(serializers.ModelSerializer):
     def define_member_class_attrbutes(self):
         """
         Returns a member class with its appropriate class attributes.
-        This method is used for keeping code DRY with StaffSerializer.
+        This method is used for keeping code DRY with StaffRegistrationSerializer.
         """
         org, created = Organization.objects.get_or_create(
             organization_name=self.validated_data["member"]["organization"]["organization_name"])
@@ -65,7 +65,7 @@ class AdministratorSerializer(serializers.ModelSerializer):
         return administrator
 
 
-class StaffSerializer(AdministratorSerializer):
+class StaffRegistrationSerializer(AdministratorSerializer):
     class Meta:
         model = Staff
         fields = AdministratorSerializer.Meta.fields + ["role"]
@@ -77,3 +77,11 @@ class StaffSerializer(AdministratorSerializer):
         staff = Staff.objects.create(
             member=member, role=self.validated_data["role"])
         return staff
+
+
+class StaffSerializer(serializers.ModelSerializer):
+    member = MemberSerializer()
+
+    class Meta:
+        model = Staff
+        fields = ["id", "role", "member"]

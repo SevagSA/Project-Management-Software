@@ -1,25 +1,29 @@
-from django.urls import path
-from .views import (
-    register_administrator,
-    register_staff,
-    get_all_staff_role_choices,
-    blacklist_token,
-    UpdateAdministratorAPIView
-)
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
-app_name = "account_api"
-urlpatterns = [
-    path("register-administrator/", register_administrator),
+from .views import (
+    register_administrator,
+    register_staff,
+    get_all_staff_role_choices,
+    blacklist_token,
+    StaffViewSet
+)
 
+router = DefaultRouter()
+router.register(r"staff", StaffViewSet)
+
+app_name = "account_app"
+urlpatterns = [
+    path("", include(router.urls)),
+    # TODO: Replace these with Viewsets and register in router
+    path("register-administrator/", register_administrator),
     path("register-staff/", register_staff),
     path("staff-role-choices/", get_all_staff_role_choices),
-
-    path("member/administrator/<int:pk>/update",
-         UpdateAdministratorAPIView.as_view()),
 
     # JWT
     path('token/', TokenObtainPairView.as_view(), name="token_obtain_pair"),
