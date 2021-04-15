@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import taskViewStyles from "../Activity/ViewActivity/Styles"
+import activityViewStyles from "../Activity/ViewActivity/Styles"
 import { members, roles } from "../../DummyData";
 import ProfileCard from "../Widgets/ProfileCard/ProfileCard";
 
@@ -19,29 +19,29 @@ export default function ViewMembers() {
     };
 
     return (
-        <taskViewStyles.Wrapper>
+        <activityViewStyles.Wrapper>
 
-            <taskViewStyles.SearchDiv>
-                <taskViewStyles.ResultCountHolder>
-                    <taskViewStyles.ResultCount>
+            <activityViewStyles.SearchDiv>
+                <activityViewStyles.ResultCountHolder>
+                    <activityViewStyles.ResultCount>
                         {searchResults.length} {searchResults.length > 1 ? "Members" : "Member"}
-                    </taskViewStyles.ResultCount>
-                </taskViewStyles.ResultCountHolder>
-                <taskViewStyles.SearchFieldHolder>
-                    <taskViewStyles.SearchQueryInput
+                    </activityViewStyles.ResultCount>
+                </activityViewStyles.ResultCountHolder>
+                <activityViewStyles.SearchFieldHolder>
+                    <activityViewStyles.SearchQueryInput
                         type="search"
                         onChange={searchMemberByName}
                         placeholder="Search member by name" />
-                    <taskViewStyles.SearchFilterBy onChange={searchMemberByRole}>
+                    <activityViewStyles.SearchFilterBy onChange={searchMemberByRole}>
                         <option value="" selected disabled hidden>Search by Role</option>
                         {roles.map(e => {
                             return (
                                 <option key={e} value={e}>{e}</option>
                             )
                         })}
-                    </taskViewStyles.SearchFilterBy>
-                </taskViewStyles.SearchFieldHolder>
-            </taskViewStyles.SearchDiv>
+                    </activityViewStyles.SearchFilterBy>
+                </activityViewStyles.SearchFieldHolder>
+            </activityViewStyles.SearchDiv>
 
             <div>
                 {searchResults.map(member => {
@@ -50,6 +50,6 @@ export default function ViewMembers() {
                     )
                 })}
             </div>
-        </taskViewStyles.Wrapper>
+        </activityViewStyles.Wrapper>
     )
 }
