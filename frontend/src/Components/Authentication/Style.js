@@ -85,6 +85,16 @@ const AuthFormSelect = styled.select`
     color: #1727b3;
 `;
 
+const AuthFormTextArea = styled.textarea`
+    margin: 5px 0px 20px 0px;
+    height: 30px;
+    width: 430px;
+    border: 1px solid #1727b3;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #1727b3;
+    resize: vertical;
+`;
 
 const styles = {
     ParentWrapper,
@@ -98,7 +108,8 @@ const styles = {
     AuthFormSubmitInput,
     AuthFormLabel,
     AuthFormInput,
-    AuthFormSelect
+    AuthFormSelect,
+    AuthFormTextArea
 };
 
 export default styles;
