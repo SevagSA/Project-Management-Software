@@ -6,14 +6,14 @@ from django.contrib.auth.hashers import make_password
 from account.models import Member
 
 
-class TestUserView(TestCase):
+class TestUserViews(TestCase):
 
     @classmethod
     def setUpClass(cls):
         cls.user = Member.objects.create(
             email="joe@doe.com", first_name="joe",
             last_name="doe", password=make_password("pass123"))
-        super(TestUserView, cls).setUpClass()
+        super(TestUserViews, cls).setUpClass()
 
     def test_register_view(self):
         # GET

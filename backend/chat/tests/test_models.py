@@ -6,7 +6,7 @@ from chat.models import ChatRoom, Message
 from account.models import Member, Organization
 
 
-class TestChatModel(TestCase):
+class TestChatModels(TestCase):
 
     def setUp(self):
 

@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import check_password
 from account.models import Member, Organization, Staff, Administrator
 
 
-class TestUserModel(TestCase):
+class TestUserModels(TestCase):
 
     def setUp(self):
         self.organization = Organization.objects.create(

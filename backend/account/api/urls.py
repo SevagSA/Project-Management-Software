@@ -26,7 +26,7 @@ urlpatterns = [
     path("staff-role-choices/", get_all_staff_role_choices),
 
     # JWT
-    path('token/', TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path('token/refresh/', TokenRefreshView.as_view(), name="token_refresh"),
+    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("logout/blacklist_token/", blacklist_token),
 ]
