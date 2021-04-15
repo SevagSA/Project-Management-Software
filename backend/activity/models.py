@@ -20,6 +20,7 @@ class Activity(models.Model):
     deadline = models.DateField()
     labels = models.ManyToManyField("Label", blank=True)
     notes = models.TextField(null=True, blank=True)
+    is_task = models.BooleanField(default=False)
 
     class Meta:
         abstract = True

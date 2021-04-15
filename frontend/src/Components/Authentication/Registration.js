@@ -76,7 +76,7 @@ export default function Registration({ isAdmin }) {
                             "to it."
                             :
                             "As Admin, you can register your staff members into the system to give " +
-                            "them access to all of tasks that they're responsible for and to allow them to " +
+                            "them access to all of projects and tasks that they're responsible for and to allow them to " +
                             "communicate with other memebers of your organization. After registering them " +
                             "an account, the staff member will receive an email with instructions on how to " +
                             "login."

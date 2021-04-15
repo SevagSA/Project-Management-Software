@@ -5,7 +5,7 @@ const Wrapper = styled.div`
     height: 90vh;
 `;
 
-const TaskInfoSection = styled.div`
+const ActivityInfoSection = styled.div`
     flex: .70;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ const TaskInfoSection = styled.div`
 
 const styles = {
     Wrapper,
-    TaskInfoSection,
+    ActivityInfoSection,
 };
 
 export default styles;

@@ -31,7 +31,7 @@ const Status = styled.div`
     }}
 `;
 
-const TaskTitle = styled.h4`
+const ActivityTitle = styled.h4`
     margin-bottom: 0px;
 `;
 
@@ -50,7 +50,7 @@ const PM = styled.p`
     font-weight: bold;
 `;
 
-const TaskDetailBtn = styled.button`
+const ActivityDetailBtn = styled.button`
     position: absolute;
     bottom: 5px;
     background-color: #1727b3;
@@ -71,11 +71,11 @@ const ArrowIcon = {
 const styles = {
     Wrapper,
     Status,
-    TaskTitle,
+    ActivityTitle,
     Ul,
     Li,
     PM,
-    TaskDetailBtn,
+    ActivityDetailBtn,
     ArrowIcon
 }
 

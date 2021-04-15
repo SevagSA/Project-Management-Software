@@ -13,11 +13,11 @@ const Wrapper = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 `;
 
-const TaskTitle = styled.h4`
+const ActivityTitle = styled.h4`
     margin: 0;
 `;
 
-const TaskStatus = styled.div`
+const ActivityStatus = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
@@ -40,8 +40,8 @@ const TaskStatus = styled.div`
 
 const styles = {
     Wrapper,
-    TaskTitle,
-    TaskStatus
+    ActivityTitle,
+    ActivityStatus
 };
 
 export default styles;

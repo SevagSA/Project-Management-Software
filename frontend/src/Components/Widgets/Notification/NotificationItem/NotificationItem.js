@@ -1,7 +1,7 @@
 import styles from "./Styles";
 import InfoIcon from '@material-ui/icons/Info';
 
-export default function ActivityItem({activity}) {
+export default function NotificationItem({notification}) {
     return (
         <styles.Wrapper>
             <styles.IconHolder>
@@ -12,9 +12,10 @@ export default function ActivityItem({activity}) {
                 <styles.Timestamp>
                     13:34
                 </styles.Timestamp>
-                <styles.ActivityDescription>
+                
+                <styles.NotificationDescription>
                     Lorem ipsum, or lipsum as it is sometimes known, is dummy text used
-                </styles.ActivityDescription>
+                </styles.NotificationDescription>
             </styles.InfoHolder>
         </styles.Wrapper>
     )

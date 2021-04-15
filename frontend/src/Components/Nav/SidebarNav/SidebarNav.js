@@ -18,8 +18,9 @@ export default function SidebarNav() {
             </styles.SidebarNavProfileHolder>
             <Link exact to="/"><SidebarNavItem itemTitle={"Home"} icon={<HomeIcon />} /></Link>
             <Link exact to="/chat"><SidebarNavItem itemTitle={"Chat"} icon={<ChatIcon />} /></Link>
-            <Link exact to="/tasks"><SidebarNavItem itemTitle={"View Tasks"} icon={<AssignmentIcon />} /></Link>
+            <Link exact to="/activities"><SidebarNavItem itemTitle={"View Activities"} icon={<AssignmentIcon />} /></Link>
             <Link exact to="/members"><SidebarNavItem itemTitle={"View Members"} icon={<PersonIcon />} /></Link>
+            <Link exact to="/create-project"><SidebarNavItem itemTitle={"Create Project"} icon={<CreateIcon />} /></Link>
             <Link exact to="/create-task"><SidebarNavItem itemTitle={"Create Task"} icon={<CreateIcon />} /></Link>
         </styles.SidebarNavWrapper>
     )

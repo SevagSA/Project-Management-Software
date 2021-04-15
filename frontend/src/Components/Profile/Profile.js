@@ -1,8 +1,8 @@
 import styles from "./Styles";
 import { tasks } from "../../DummyData";
 import ProfileCard from "../Widgets/ProfileCard/ProfileCard";
-import TaskList from "../Widgets/Task/TaskList/TaskList";
-import ActivityWidget from "../Widgets/Activity/ActivityWidget/ActivityWidget";
+import ActivityList from "../Widgets/Activity/ActivityList/ActivityList";
+import ActivityWidget from "../Widgets/Notification/NotificationWidget/NotificationWidget";
 
 export default function Profile(/**{ member }*/) {
     // for now, the logic to filter tasks that the member is associated
@@ -14,7 +14,7 @@ export default function Profile(/**{ member }*/) {
             <ProfileCard />
             <styles.ProfileContentHolder>
                 <ActivityWidget />
-                <TaskList tasks={tasks} /**isMemberSpecific={true}*/ />
+                <ActivityList activities={tasks}  /**isMemberSpecific={true}*/ />
             </styles.ProfileContentHolder>
         </styles.Wrapper>
     )

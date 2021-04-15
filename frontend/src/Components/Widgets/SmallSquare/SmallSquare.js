@@ -8,7 +8,7 @@ export default function SmallSquare({status, numOfTasks}) {
         <styles.Wrapper>
             <styles.TaskStatus>tasks {status}</styles.TaskStatus>
             <p>{numOfTasks}</p>
-            <Link exact to={`/tasks?status=${status}`}>
+            <Link exact to={`/activities?status=${status}`}>
             <styles.TaskDetailBtn>
                 View &quot;{status}&quot; tasks
                 <ArrowForwardIosIcon style={styles.ArrowIcon}/>

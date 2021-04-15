@@ -31,7 +31,7 @@ const Timestamp = styled.small`
     margin-bottom: 2px;
 `;
 
-const ActivityDescription = styled.p`
+const NotificationDescription = styled.p`
     margin-top: 2px;
 `;
 
@@ -45,7 +45,7 @@ const style = {
     IconLine,
     InfoHolder,
     Timestamp,
-    ActivityDescription,
+    NotificationDescription,
     InfoIcon
 }
 

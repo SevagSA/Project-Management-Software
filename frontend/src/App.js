@@ -7,11 +7,11 @@ import {
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
 import Home from "./Components/Home/Home";
-import CreateTask from "./Components/Task/CreateTask";
-import ViewTasks from "./Components/Task/ViewTasks/ViewTasks";
+import CreateActivity from "./Components/Activity/CreateActivity";
+import ViewActivity from "./Components/Activity/ViewActivity/ViewActivity";
 import ChatRoom from "./Components/Chat/ChatRoom/ChatRoom";
 import SidebarNav from "./Components/Nav/SidebarNav/SidebarNav";
-import TaskDetail from "./Components/Task/TaskDetail/TaskDetail"
+import ActivityDetail from "./Components/Activity/ActivityDetail/ActivityDetail"
 import Registration from "./Components/Authentication/Registration";
 import Login from "./Components/Authentication/Login";
 import Profile from "./Components/Profile/Profile";
@@ -35,15 +35,21 @@ function App() {
                     <Route exact path="/chat">
                         <ChatRoom />
                     </Route>
-                    <Route exact path="/tasks/:id">
-                        <TaskDetail />
+                    <Route exact path="/activities/:id">
+                        <ActivityDetail />
                     </Route>
-                    <Route exact path="/tasks">
-                        <ViewTasks />
+
+                    <Route exact path="/activities">
+                        <ViewActivity />
                     </Route>
+
                     <Route exact path="/create-task">
-                        <CreateTask />
+                        <CreateActivity isTask={true} />
                     </Route>
+                    <Route exact path="/create-project">
+                        <CreateActivity isTask={false} />
+                    </Route>
+
                     <Route exact path="/admin-registration">
                         <Registration isAdmin={true} />
                     </Route>

@@ -1,8 +1,8 @@
 import styles from "./Styles";
 import { tasks } from "../../DummyData";
 import SmallSquare from "../Widgets/SmallSquare/SmallSquare";
-import TaskList from "../Widgets/Task/TaskList/TaskList";
-import ActivityWidget from "../Widgets/Activity/ActivityWidget/ActivityWidget";
+import ActivityList from "../Widgets/Activity/ActivityList/ActivityList";
+import ActivityWidget from "../Widgets/Notification/NotificationWidget/NotificationWidget";
 
 export default function Home() {
     const inProgressCount = tasks.filter(e => e.status === "In progress").length;
@@ -14,6 +14,7 @@ export default function Home() {
         <div>
             <h1>Home</h1>
             <styles.WidgetWrapper>
+                {/* TODO fetch options from Django (setting.py) */}
                 <SmallSquare numOfTasks={inProgressCount} status="in progress" />
                 <SmallSquare numOfTasks={completedCount} status="completed" />
                 <SmallSquare numOfTasks={notStartedCount} status="not started" />
@@ -21,7 +22,7 @@ export default function Home() {
             </styles.WidgetWrapper>
             <styles.WidgetWrapper>
                 <ActivityWidget />
-                <TaskList tasks={tasks} />
+                <ActivityList activities={tasks} />
             </styles.WidgetWrapper>
         </div>
     )

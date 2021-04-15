@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import taskViewStyles from "../Task/ViewTasks/Styles"
+import taskViewStyles from "../Activity/ViewActivity/Styles"
 import { members, roles } from "../../DummyData";
 import ProfileCard from "../Widgets/ProfileCard/ProfileCard";
 
