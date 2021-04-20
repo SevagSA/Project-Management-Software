@@ -85,3 +85,19 @@ class StaffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Staff
         fields = ["id", "role", "member"]
+
+
+class StaffSerializerForProjectSelect(serializers.ModelSerializer):
+    """
+    Serializer used to select a staff to assign a project to.
+    
+    A new serializer is created because there's no need for the
+    `member` field/serializer nor the validation that the
+    StaffRegistrationSerializer includes.
+    """
+    email = serializers.EmailField()
+    project_count = serializers.IntegerField()
+
+    class Meta:
+        model = Staff
+        fields = ["id", "role", "email", "project_count"]

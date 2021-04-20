@@ -8,8 +8,8 @@ export default function Login() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        axiosInstance.
-            post("account/token/", {
+        axiosInstance
+            .post("account/token/", {
                 email: normalizeStr(e.target.email.value),
                 password: e.target.password.value,
             })

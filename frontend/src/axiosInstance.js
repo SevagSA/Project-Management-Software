@@ -7,10 +7,10 @@ const axiosInstance = axios.create({
     timeout: 5000,
     headers: {
         Authorization: localStorage.getItem("access_token")
-            ? "JWT " + localStorage.getItem("access_token")
+            ? "Bearer " + localStorage.getItem("access_token")
             : null,
         "Content-Type": "application/json",
-        accept: "application/json",
+        "accept": "application/json",
     }
 });
 
@@ -60,9 +60,9 @@ axiosInstance.interceptors.response.use(
                             localStorage.setItem("refresh_token", response.data.refresh);
 
                             axiosInstance.defaults.headers["Authorization"] =
-                                "JWT " + response.data.access;
+                                "Bearer " + response.data.access;
                             originalRequest.headers["Authorization"] =
-                                "JWT " + response.data.access;
+                                "Bearer " + response.data.access;
 
                             return axiosInstance(originalRequest);
                         })
@@ -84,6 +84,17 @@ axiosInstance.interceptors.response.use(
     }
 );
 
+axiosInstance.interceptors.request.use(
+    config => {
+        const token = localStorage.getItem("access_token");
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    error => Promise.reject(error)
+);
+
 /**
  * Takes a String and trims it. The function also
  * removes any extra whitespaces between 2 words.
@@ -93,4 +104,6 @@ const normalizeStr = (e) => {
     return e.trim().replace(/\s+/g, " ");
 }
 
-export { axiosInstance, normalizeStr };
+const STAFF_API_ENDPOINT = "http://127.0.0.1:8000/api/account/staff/"
+
+export { axiosInstance, normalizeStr, STAFF_API_ENDPOINT };

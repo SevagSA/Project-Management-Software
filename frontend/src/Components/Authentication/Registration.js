@@ -34,12 +34,12 @@ export default function Registration({ isAdmin }) {
             }
         }
 
-        axiosInstance.
-            post(endpoint, body)
+        axiosInstance
+            .post(endpoint, body)
             .then(response => {
                 console.log("response:", response)
                 if (response.status === 201) {
-                    alert("Your account has been created.")
+                    alert("Account has been created.")
                     history.push("/login")
                 }
                 return response.data
@@ -54,8 +54,8 @@ export default function Registration({ isAdmin }) {
 
     useEffect(() => {
         if (!isAdmin) {
-            axiosInstance.
-                get("account/staff-role-choices/")
+            axiosInstance
+                .get("account/staff-role-choices/")
                 .then(response => {
                     setStaffRoles(response.data.roles)
                 })
@@ -77,7 +77,7 @@ export default function Registration({ isAdmin }) {
                             :
                             "As Admin, you can register your staff members into the system to give " +
                             "them access to all of projects and tasks that they're responsible for and to allow them to " +
-                            "communicate with other memebers of your organization. After registering them " +
+                            "communicate with other members of your organization. After registering them " +
                             "an account, the staff member will receive an email with instructions on how to " +
                             "login."
                         }

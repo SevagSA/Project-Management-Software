@@ -30,13 +30,13 @@ export default function ChatSidebar({ cardClickHandler }) {
                             <h1>Create a chat room</h1>
                             <styles.ChatRoomMenuMemberList>
                                 {
-                                    /* Django: fetch all memebers, if selects member that already has chat with,
+                                    /* Django: fetch all members, if selects member that already has chat with,
                                     return/render that chatRoom */
                                 }
                                 {members.map(member => {
                                     return (
                                         <styles.AddMemberCard>
-                                            <styles.MemeberImg src={member.profile_pic} />
+                                            <styles.MemberImg src={member.profile_pic} />
                                             <styles.MemberName>Member's name</styles.MemberName>
                                             <AddCircleOutlineIcon style={styles.AddContactIcon} />
                                         </styles.AddMemberCard>

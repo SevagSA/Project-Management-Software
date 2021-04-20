@@ -24,7 +24,7 @@ export default function ChatView({ chatRoomId }) {
         <styles.Wrapper>
             <styles.InfoBar>
                 <styles.ChatTitleAndActiveStatus>
-                    {/* Django: return the memeber that != request.user */}
+                    {/* Django: return the member that != request.user */}
                     <styles.ChatTitle>{chatRoom.members[0].name}</styles.ChatTitle>
                     <styles.ActiveStatus>Active</styles.ActiveStatus>
                 </styles.ChatTitleAndActiveStatus>

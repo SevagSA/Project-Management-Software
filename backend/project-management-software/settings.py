@@ -83,7 +83,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCEDD_TOKEN_LIFETIME": timedelta(seconds=20)
+    "AUTH_HEADER_TYPES": ("Bearer",)
 }
 
 # CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.db.models.fields import DateField
+from django.core.exceptions import ValidationError
 from django.contrib.contenttypes.fields import GenericRelation
 
 from account.models import Staff
@@ -28,11 +29,36 @@ class Activity(models.Model):
     def __str__(self):
         return self.name
 
+    def clean(self):
+        """
+        To enforce data validation from places other
+        than serializers like the admin dashboard.
+        """
+        if self.end_date and self.end_date < self.start_date:
+            raise ValidationError(
+                "End date must be either the same day or a later \
+                    date than the project start date")
+
+        if self.deadline < self.start_date:
+            raise ValidationError(
+                "Deadline must be either the same day or a later \
+                    date than the project start date")
+
 
 class Project(Activity):
     project_manager = models.ForeignKey(
-        Staff, on_delete=models.CASCADE, related_name="project")
+        Staff, on_delete=models.CASCADE, related_name="projects_as_pm")
     notification = GenericRelation(Notification)
+
+    def clean(self):
+        """
+        To enforce data validation from places other
+        than serializers like the admin dashboard.
+        """
+        if not self.project_manager.role == settings.PM:
+            raise ValidationError(
+                "Only staff with a role of Project Manager can be assigned \
+                    as project manager of a project.")
 
 
 class Task(Activity):

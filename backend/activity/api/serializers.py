@@ -14,7 +14,8 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
     notification = serializers.HyperlinkedIdentityField(
         view_name="notification-detail")
     staff_members = serializers.HyperlinkedRelatedField(
-        allow_empty=False, many=True, queryset=Staff.objects.all(),
+        allow_empty=False, many=True,
+        queryset=Staff.objects.all().exclude(role=settings.PM),
         view_name="account:staff-detail")
 
     class Meta:
@@ -24,6 +25,11 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
             "name", "status", "description", "start_date", "end_date",
             "deadline", "labels", "notes"
         ]
+
+    # forced to re-write validation code here and break DRY
+    # since DRF does not call .clean(). Also can't use custom
+    # validators on the model fields as well since some of
+    # them need `self` to validate based on other fields.
 
     def validate_end_date(self, value):
         start_date = datetime.datetime.strptime(

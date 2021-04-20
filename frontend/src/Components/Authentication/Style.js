@@ -77,7 +77,7 @@ const AuthFormInput = styled.input`
 
 const AuthFormSelect = styled.select`
     margin: 5px 0px 20px 0px;
-    height: 30px;
+    height: 45px;
     width: 430px;
     border: 1px solid #1727b3;
     border-radius: 5px;
@@ -94,6 +94,7 @@ const AuthFormTextArea = styled.textarea`
     font-size: 16px;
     color: #1727b3;
     resize: vertical;
+    font-family: 'Helvetica', 'Arial', sans-serif;
 `;
 
 const styles = {

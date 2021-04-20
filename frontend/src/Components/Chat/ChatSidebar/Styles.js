@@ -71,7 +71,7 @@ const AddMemberCard = styled.div`
     margin-bottom: 10px;
 `;
 
-const MemeberImg = styled.img`
+const MemberImg = styled.img`
     width: 50px;
     border-radius: 50%;
     margin-right: 13px;
@@ -91,7 +91,7 @@ const styles = {
     CancelIcon,
     ChatRoomMenuMemberList,
     AddMemberCard,
-    MemeberImg,
+    MemberImg,
     MemberName
 }
 

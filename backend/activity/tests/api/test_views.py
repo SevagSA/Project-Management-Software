@@ -11,7 +11,7 @@ class TestsActivityViews(APITestCase):
 
     @classmethod
     def setUpClass(cls):
-        # Creating a new staff member
+        # Defining a staff member
         # TODO will be changed to reverse once
         # account views are changed to viewsets
         cls.staff_url = "/api/account/register-staff/"
@@ -30,11 +30,27 @@ class TestsActivityViews(APITestCase):
             "role": settings.BACKEND_DEVELOPER
         }
 
-        # Creating a project manager
+        # Defining a project manager
         # TODO will be changed to reverse once
         # account views are changed to viewsets
-        project_manager_url = "/api/account/register-staff/"
         cls.project_manager_data = {
+            "member": {
+                "email": "jason@orgname.com",
+                "first_name": "Jason",
+                "last_name": "McJason",
+                "phone_number": "5141857435",
+                "organization": {
+                    "organization_name": "An organization"
+                }
+            },
+            "password": "123",
+            "password2": "123",
+            "role": settings.PM
+        }
+
+        # Defining an organization admin
+        administrator_url = "/api/account/register-administrator/"
+        cls.administrator_data = {
             "member": {
                 "email": "alex@orgname.com",
                 "first_name": "Alex",
@@ -45,20 +61,22 @@ class TestsActivityViews(APITestCase):
                 }
             },
             "password": "123",
-            "password2": "123",
-            "role": settings.PM
+            "password2": "123"
         }
 
         # This client will hold a bearer token, hence "_auth"
         cls.client_auth = APIClient()
-        cls.project_manager = cls.client_auth.post(
-            project_manager_url, cls.project_manager_data).data
+        # cls.project_manager = cls.client_auth.post(project_manager_url, cls.project_manager_data).data
         cls.staff_member = cls.client_auth.post(cls.staff_url, staff_data).data
+        cls.project_manager = cls.client_auth.post(
+            cls.staff_url, cls.project_manager_data).data
+        cls.administrator = cls.client_auth.post(
+            administrator_url, cls.administrator_data).data
 
         # Getting the project_manager's token
         cls.token_url = reverse("account:token_obtain_pair")
         token_data = {
-            "email": cls.project_manager["member"]["email"],
+            "email": cls.administrator["member"]["email"],
             "password": "123",
         }
         cls.access_token = cls.client_auth.post(
@@ -69,14 +87,15 @@ class TestsActivityViews(APITestCase):
         # A sample project data
         cls.project = {
             "staff_members": [
-                "http://127.0.0.1:8000/api/account/staff/2/"
+                "http://127.0.0.1:8000/api/account/staff/1/"
             ],
             "name": "UML Design",
             "description": "Build UML diagrams (Class, Use Case and Activity Diagrams).\
                 See Google Drive for information on the requirements.",
             "start_date": "2021-04-17",
             "deadline": "2021-05-17",
-            "notes": "We need to decide if we will use Lucidchart or draw.io"
+            "notes": "We need to decide if we will use Lucidchart or draw.io",
+            "project_manager": "http://127.0.0.1:8000/api/account/staff/2/"
         }
 
         # Defining URLs for reuse throughout the class.

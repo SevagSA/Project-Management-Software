@@ -5,6 +5,10 @@ from account.models import Staff
 
 
 class IsAuthorizedOrReadOnly(permissions.BasePermission):
+    """
+    Custom permissions used for ProjectViewSet and TaskViewSet.
+    """
+
     def __init__(self, is_task):
         super().__init__()
         self.is_task = is_task
@@ -18,12 +22,10 @@ class IsAuthorizedOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        # Write permissions are allowed to admin, and staff with a role of PM
+        # Write permissions are allowed to admin only.
         if view.action == "create" or \
             view.action == "update" or \
                 view.action == "destroy":
-            if request.user.is_organization_staff:
-                return request.user.staff.role == settings.PM
             return request.user.is_organization_admin
         return False
 

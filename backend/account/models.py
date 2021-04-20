@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count, F
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.conf import settings
 
@@ -111,13 +112,57 @@ class Administrator(models.Model):
     """
     This class is created to prevent tedious db record
     changes in the future, if this class were to have
-    different fields than its parent.
+    additional fields than the Member model.
     """
     member = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.member.email
+
+
+class StaffManager(models.Manager):
+
+    def get_eligible_project_manager_for_project(self, organization):
+        """
+        Return a QuerySet of staff members that are eligible
+        to be assigned to a project as a `project_manager` (not
+        as a `staff_member`).
+
+        A staff is considered eligible if they are:
+            1. A project manager.
+            2. From the same organization as the param `organization`
+            3. Currently assigned to less than 3 projects (< 3).
+        """
+        return Staff.objects.filter(
+            role=settings.PM,
+            member__organization=organization
+        ).annotate(
+            project_count=Count(F("projects_as_pm"))
+        ).filter(
+            project_count__lt=3
+        ).annotate(email=F("member__email"))
+
+    def get_eligible_staff_for_project(self, organization):
+        """
+        Return a QuerySet of staff members that are eligible
+        to be assigned to a project as a `staff_member` (not
+        as a `project_manager`).
+
+        A staff is considered eligible if they are:
+            1. From the same organization as the param `organization`
+            2. Not a project manager.
+            3. Currently assigned to less than 3 projects (< 3).
+        """
+        return Staff.objects.filter(
+            member__organization=organization
+        ).exclude(
+            role=settings.PM
+        ).annotate(
+            project_count=Count(F("activity_project_related"))
+        ).filter(
+            project_count__lt=3
+        ).annotate(email=F("member__email"))
 
 
 class Staff(models.Model):
@@ -127,6 +172,8 @@ class Staff(models.Model):
     # Django 3.0+ : TextChoices
     role = models.CharField(
         max_length=20, choices=settings.STAFF_ROLES, default=settings.STAFF_MEMBER)
+
+    objects = StaffManager()
 
     def __str__(self):
         return self.member.email
